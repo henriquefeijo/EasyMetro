@@ -7,11 +7,15 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <link rel="stylesheet" href="css/idangerous.swiper.css">
     <style>
-
-        .swiper-container {
-            width: 300px;
-        }
-
+        .swiper-container { width: 300px; }
+        
+        .metroLine { overflow:hidden; padding:0px; margin:0px; display:block; width:300px; position:relative; margin-left:100px; }
+        .metroLine-red { background-color:#D62929; }
+        .metroLine-orange { background-color:#EF9431; }
+        .metroLine-blue { background-color:#006BAD; }
+        .metroLine li { margin-left:22px; list-style-type:none; display:block; overflow:hidden; width:300px;  background-color:#FFF;  }
+        .metroLine li a { float:left; white-space:nowrap; padding:15px 0px 15px 8px; font-family: arial; font-weight: bold;  }
+        .metroLine li a span { float:left; position:absolute; left:2px; z-index:100; background: #FFFFFF; border: 4px solid #000000; border-radius: 14px; display: block; height: 10px; width: 10px; }
     </style>
     <title>Demo</title>
 </head>
@@ -19,13 +23,90 @@
 
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"> <img src="img/red.png"> </div>
-        <div class="swiper-slide"> <img src="img/orange.png"> </div>
         <div class="swiper-slide">
-          <div class="content-slide">
-            <p class="title">Slide with HTML</p>
-            <p>You can put any HTML inside of slide with any layout, not only images, even another Swiper!</p>
-          </div>
+            <ul class="metroLine metroLine-red">
+                <li><a><span></span>Shady Grove</a></li>
+                <li class="even"><a><span></span>Rockville</a></li>
+                <li><a><span></span>Twinbrook</a></li>
+                <li class="even"><a><span></span>White Flint</a></li>
+                <li><a><span></span>Grosvenor</a></li>
+                <li class="even"><a><span></span>Medical Center</a></li>
+                <li><a><span></span>Bethesda</a></li>
+                <li class="even"><a><span></span>Friendship Heights</a></li>
+                <li><a><span></span>Tenleytown</a></li>
+                <li class="even"><a><span></span>Van Ness UDC</a></li>
+                <li><a><span></span>Cleveland Park</a></li>
+                <li class="even"><a><span></span>Woodley Park Zoo</a></li>
+                <li><a><span></span>Dupont Circle</a></li>
+                <li class="even"><a><span></span>Farragut North</a></li>
+                <li><a><span></span>Metro Center</a></li>
+                <li class="even"><a><span></span>Gallery Place</a></li>
+                <li><a><span></span>Judiciary Square</a></li>
+                <li class="even"><a><span></span>Union Station</a></li>
+                <li><a><span></span>New York Ave</a></li>
+                <li class="even"><a><span></span>Rhode Island Ave</a></li>
+                <li><a><span></span>Brookland</a></li>
+                <li class="even"><a><span></span>Fort Totten</a></li>
+                <li><a><span></span>Takoma</a></li>
+                <li class="even"><a><span></span>Silver Spring</a></li>
+                <li><a><span></span>Forest Glen</a></li>
+                <li class="even"><a><span></span>Wheaton</a></li>
+                <li><a><span></span>Glenmont</a></li>
+            </ul>  
+        </div>
+        <div class="swiper-slide">
+            <ul class="metroLine metroLine-orange">
+                <li><a><span></span>Vienna</a></li>
+                <li class="even"><a><span></span>Dunn-Loring</a></li>
+                <li><a><span></span>West Falls Church</a></li>
+                <li class="even"><a><span></span>East Falls Church</a></li>
+                <li><a><span></span>Ballston</a></li>
+                <li class="even"><a><span></span>Virginia Square</a></li>
+                <li><a><span></span>Clarendon</a></li>
+                <li class="even"><a><span></span>Court House</a></li>
+                <li><a><span></span>Rosslyn</a></li>
+                <li class="even"><a><span></span>Foggy Bottom</a></li>
+                <li><a><span></span>Farragut West</a></li>
+                <li class="even"><a><span></span>McPhearson Square</a></li>
+                <li><a><span></span>Metro Center</a></li>
+                <li class="even"><a><span></span>Farragut North</a></li>
+                <li><a><span></span>Metro Center</a></li>
+                <li class="even"><a><span></span>Gallery Place</a></li>
+                <li><a><span></span>Judiciary Square</a></li>
+                <li class="even"><a><span></span>Union Station</a></li>
+                <li><a><span></span>New York Ave</a></li>
+                <li class="even"><a><span></span>Rhode Island Ave</a></li>
+                <li><a><span></span>Brookland</a></li>
+                <li class="even"><a><span></span>Fort Totten</a></li>
+                <li><a><span></span>Takoma</a></li>
+            </ul>  
+        </div>
+        <div class="swiper-slide">
+            <ul class="metroLine metroLine-blue">
+                <li><a><span></span>Largo Town Center</a></li>
+                <li class="even"><a><span></span>Morgan Blvd</a></li>
+                <li><a><span></span>Addison Road</a></li>
+                <li class="even"><a><span></span>Capitol Heights</a></li>
+                <li><a><span></span>Benning Road</a></li>
+                <li class="even"><a><span></span>Virginia Square</a></li>
+                <li><a><span></span>Clarendon</a></li>
+                <li class="even"><a><span></span>Court House</a></li>
+                <li><a><span></span>Rosslyn</a></li>
+                <li class="even"><a><span></span>Foggy Bottom</a></li>
+                <li><a><span></span>Farragut West</a></li>
+                <li class="even"><a><span></span>McPhearson Square</a></li>
+                <li><a><span></span>Metro Center</a></li>
+                <li class="even"><a><span></span>Farragut North</a></li>
+                <li><a><span></span>Metro Center</a></li>
+                <li class="even"><a><span></span>Gallery Place</a></li>
+                <li><a><span></span>Judiciary Square</a></li>
+                <li class="even"><a><span></span>Union Station</a></li>
+                <li><a><span></span>New York Ave</a></li>
+                <li class="even"><a><span></span>Rhode Island Ave</a></li>
+                <li><a><span></span>Brookland</a></li>
+                <li class="even"><a><span></span>Fort Totten</a></li>
+                <li><a><span></span>Takoma</a></li>
+            </ul>  
         </div>
       </div>
     </div>
