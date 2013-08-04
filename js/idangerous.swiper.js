@@ -1086,7 +1086,10 @@ var Swiper = function (selector, params) {
     var isTouchEvent = false;
     var allowThresholdMove;
     var allowMomentumBounce = true;
+    var pageStartY = 0;
     function onTouchStart(event) {
+        
+        pageStartY = _this.container.scrollTop;
         if (params.preventLinks) _this.allowLinks = true;
         //Exit if slider is already was touched
         if (_this.isTouched || params.onlyExternal) {
@@ -1152,10 +1155,14 @@ var Swiper = function (selector, params) {
         // If slider is not touched - exit
         if (!_this.isTouched || params.onlyExternal) return;
         if (isTouchEvent && event.type=='mousemove') return;
+        if (Math.abs(pageStartY - _this.container.scrollTop) != 0) return;
 
         var pageX = isTouchEvent ? event.targetTouches[0].pageX : (event.pageX || event.clientX);
         var pageY = isTouchEvent ? event.targetTouches[0].pageY : (event.pageY || event.clientY);
-
+        
+        //console.log(pageStartY);
+        //console.log(_this.container.scrollTop);
+        
         //check for scrolling
         if ( typeof isScrolling === 'undefined' && isH) {
           isScrolling = !!( isScrolling || Math.abs(pageY - _this.touches.startY) > Math.abs( pageX - _this.touches.startX ) );

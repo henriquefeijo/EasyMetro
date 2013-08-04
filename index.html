@@ -7,7 +7,7 @@
     
     <link rel="stylesheet" href="css/idangerous.swiper.css">
     <style>
-        body, .app-wrapper { padding:0px; margin:0px; width: 362px; padding:0px; overflow:hidden; }
+        body, .app-wrapper { padding:0px; margin:0px; width: 362px; padding:0px; overflow:hidden; height:100%; }
         .swiper-container { /*border: solid 1px black;*/ width: 362px; float:left; margin-top:0px; z-index:100; padding:10px 0px; overflow:scroll;}
         
         .metroLine ul { overflow:hidden; padding:0px; margin:0px; display:block; width:280px; position:relative; margin-left:60px; z-index:10; }
@@ -23,8 +23,8 @@
         .trains { z-index:1000; position:relative; }
         .trains span { display:block; background-color: #4a4e57; padding:8px; color:#fff; box-shadow:0 0px 8px -2px #000 inset; }
         .trains th { font-family: arial; font-size: 9px; text-align:center; }
-        .trains td { font-family: arial; font-size: 16px; text-align:center; }
-        .trains td i { border-radius: 5px; width:16px; height:16px; display:block; float:left; margin-left:9px;}
+        .trains td { font-family: arial; font-size: 19px; text-align:center; }
+        .trains td i { border-radius: 5px; width:16px; height:19px; display:block; float:left; margin-left:9px;}
         .trains td i.red { background-color: #D62929; }
         .trains-up { margin-bottom:-15px; }
         .trains-down { margin-top:-15px; }
@@ -53,10 +53,10 @@
             <div class="green"><span></span></div>
             <div class="yellow"><span></span></div>
         </div>
-        <div class="swiper-container swiper-content">
+        <div id="MainContent" class="swiper-container swiper-content">
           <div class="swiper-wrapper">
             <div class="swiper-slide metroLine metroLine-red">
-                <ul class="">
+                <ul>
                     <li><a><i></i>Shady Grove</a></li>
                     <li class="even"><a><i></i>Rockville</a></li>
                     <li><a><i></i>Twinbrook</a></li>
@@ -121,7 +121,7 @@
                         </table>
                     </span>
                 </div>
-                <ul class="metroLine metroLine-red">
+                <ul>
                     <li><a><i></i>Grosvenor</a></li>
                     <li class="even"><a><i></i>Medical Center</a></li>
                     <li><a><i></i>Bethesda</a></li>
@@ -147,8 +147,8 @@
                     <li><a><i></i>Glenmont</a></li>
                 </ul>  
             </div>
-            <div class="swiper-slide">
-                <ul class="metroLine metroLine-orange">
+            <div class="swiper-slide metroLine metroLine-orange">
+                <ul class="">
                     <li><a><i></i>Vienna</a></li>
                     <li class="even"><a><i></i>Dunn-Loring</a></li>
                     <li><a><i></i>West Falls Church</a></li>
@@ -174,8 +174,8 @@
                     <li><a><i></i>Takoma</a></li>
                 </ul>  
             </div>
-            <div class="swiper-slide">
-                <ul class="metroLine metroLine-blue">
+            <div class="swiper-slide metroLine metroLine-blue">
+                <ul class="">
                     <li><a><i></i>Largo Town Center</a></li>
                     <li class="even"><a><i></i>Morgan Blvd</a></li>
                     <li><a><i></i>Addison Road</a></li>
@@ -201,8 +201,8 @@
                     <li><a><i></i>Takoma</a></li>
                 </ul>  
             </div>
-                      <div class="swiper-slide">
-                <ul class="metroLine metroLine-green">
+            <div class="swiper-slide metroLine metroLine-green">
+                <ul class="">
                     <li><a><i></i>Largo Town Center</a></li>
                     <li class="even"><a><i></i>Morgan Blvd</a></li>
                     <li><a><i></i>Addison Road</a></li>
@@ -228,8 +228,8 @@
                     <li><a><i></i>Takoma</a></li>
                 </ul>  
             </div>
-                      <div class="swiper-slide">
-                <ul class="metroLine metroLine-yellow">
+            <div class="swiper-slide metroLine metroLine-yellow">
+                <ul class="">
                     <li><a><i></i>Largo Town Center</a></li>
                     <li class="even"><a><i></i>Morgan Blvd</a></li>
                     <li><a><i></i>Addison Road</a></li>
@@ -266,11 +266,11 @@
         //$(".swiper-container").width($(window).width());
         //$(".swiper-container").height($(window).height());
         var mySwiper = new Swiper('.swiper-container',{
-            loop:true,
+            loop:false,
             grabCursor: true,
             onSlideChangeStart: function(){
                 $(".tabs .active").removeClass('active');
-                $(".tabs div").eq(mySwiper.activeIndex-1).addClass('active');
+                $(".tabs div").eq(mySwiper.activeIndex).addClass('active');
             }
         })
         $(".swiper-slide, .swiper-wrapper").css('height',$(window).height()-40 + 'px');
