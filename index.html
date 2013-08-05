@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="css/idangerous.swiper.css">
     <style>
         body, .app-wrapper { padding:0px; margin:0px; width: 362px; padding:0px; overflow:hidden; height:100%; }
-        .swiper-container { /*border: solid 1px black;*/ width: 362px; float:left; margin-top:0px; z-index:100; padding:10px 0px; overflow-y:scroll; overflow-x:hidden;}
+        .swiper-container { /*border: solid 1px black;*/ width: 362px; float:left; margin-top:0px; z-index:100; padding:10px 0px; overflow:hidden; }
+        .swiper-slide { overflow-y:scroll; overflow-x:hidden; }
         
         .metroLine ul { overflow:hidden; padding:0px; margin:0px; display:block; width:280px; position:relative; margin-left:60px; z-index:10; }
         .metroLine-red ul { background-color:#D62929; }
@@ -268,15 +269,15 @@
         //$(".swiper-container").width($(window).width());
         //$(".swiper-container").height($(window).height());
         //var pageX = 0;
-        var lastX = 0;
-        document.ontouchmove = function(e){ 
-            var currentPageX = document.getElementById("MainContent").scrollLeft;
-            $("#log").prepend(lastX + " - " + currentPageX + "<br/>");
-            if (currentPageX !== lastX){
-                e.preventDefault();
-            }
-            lastX = currentPageX;
-        }
+        //var lastX = 0;
+        //document.ontouchmove = function(e){ 
+        //    var currentPageX = document.getElementById("MainContent").scrollLeft;
+        //    $("#log").prepend(lastX + " - " + currentPageX + "<br/>");
+        //    if (currentPageX !== lastX){
+        //        e.preventDefault();
+        //    }
+        //    lastX = currentPageX;
+        //}
 
                 
         
