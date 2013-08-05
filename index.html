@@ -266,6 +266,7 @@
         //$(".swiper-container").width($(window).width());
         //$(".swiper-container").height($(window).height());
         //var pageX = 0;
+         document.ontouchmove = function(e){ e.preventDefault(); }
         $("#MainContent").bind('touchmove', function (e){
             var currentY = e.touches[0].clientY;
             if (currentY !== lastY){
