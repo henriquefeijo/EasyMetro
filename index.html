@@ -11,7 +11,7 @@
         .swiper-container { /*border: solid 1px black;*/ width: 360px; float:left; margin-top:0px; z-index:100; overflow:hidden; }
         .swiper-wrapper { overflow:hidden; }
         .swiper-slide { overflow-y:scroll; overflow-x:hidden;  }
-        .swiper-content {  padding:10px 0px; }
+        .swiper-content {  padding:20px 0px; }
         
         .metroLine ul { overflow:hidden; padding:0px; margin:0px; display:block; width:280px; position:relative; margin-left:60px; z-index:10; }
         .metroLine-red ul { background-color:#D62929; }
@@ -20,10 +20,13 @@
         .metroLine-green ul { background-color:#00844A; }
         .metroLine-yellow ul { background-color:#FFDE08; }
         .metroLine li { margin-left:26px; list-style-type:none; display:block; overflow:hidden; width:330px;  background-color:#FFF;  }
-        .metroLine li a { display:block; white-space:nowrap; padding:15px 0px 15px 8px; font-family: arial; font-size:20px; font-weight: bold; }
-        .metroLine li a i { float:left; position:absolute; left:2px; z-index:100; background: #FFFFFF; border: 4px solid #000000; border-radius: 14px; display: block; height: 14px; width: 14px; }
+        .metroLine li span { display:block; white-space:nowrap; padding:15px 0px 15px 8px; font-family: arial; font-size:20px; font-weight: bold; }
+        .metroLine li span i { float:left; position:absolute; left:2px; z-index:100; background: #FFFFFF; border: 4px solid #000000; border-radius: 14px; display: block; height: 14px; width: 14px; }
         
-        .trains { z-index:1000; position:relative; }
+        .trains { z-index:1000; position:relative; display:none; }
+        .trains th:nth-child(1), .trains th:nth-child(2) { width:34px; }
+        .trains th:nth-child(3) { width: 200px; }
+        .trains th:nth-child(4) { width: 40px; }
         .trains span { display:block; background-color: #4a4e57; padding:8px; color:#fff; box-shadow:0 0px 8px -2px #000 inset; }
         .trains th { font-family: arial; font-size: 9px; text-align:center; }
         .trains td { font-family: arial; font-size: 19px; text-align:center; }
@@ -60,212 +63,27 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide metroLine metroLine-red">
                 <div class="swiper-content">
-                    <ul>
-                        <li><a><i></i>Shady Grove</a></li>
-                        <li class="even"><a><i></i>Rockville</a></li>
-                        <li><a><i></i>Twinbrook</a></li>
-                    </ul>
-                    <div class="trains trains-up">
-                        <span>
-                            <table>
-                                <tr>
-                                    <th style="width:34px;">Line</th>
-                                    <th style="width:34px;">Cars</th>
-                                    <th style="width:200px;">To</th>
-                                    <th style="width:40px;">Minutes</th>
-                                </tr>
-                                <tr>
-                                    <td><i class="red"></i></td>
-                                    <td>6</td>
-                                    <td>Shady Grove</td>
-                                    <td>01</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="red"></i></td>
-                                    <td>8</td>
-                                    <td>Twinbrook</td>
-                                    <td>10</td>
-                                </tr>
-                            </table>
-                        </span>
-                        <div class="arrow-down"></div>
-                    </div>
-                    <ul>
-                        <li class="even"><a><i></i>White Flint</a></li>
-                    </ul>
-                    <div class="trains trains-down">
-                        <div class="arrow-up"></div>
-                        <span class="">
-                            
-                            <table>
-                                <tr>
-                                    <th style="width:34px;">Line</th>
-                                    <th style="width:34px;">Cars</th>
-                                    <th style="width:200px;">To</th>
-                                    <th style="width:40px;">Minutes</th>
-                                </tr>
-                                <tr>
-                                    <td><i class="red"></i></td>
-                                    <td>6</td>
-                                    <td>Glenmont</td>
-                                    <td>02</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="red"></i></td>
-                                    <td>8</td>
-                                    <td>Glenmont</td>
-                                    <td>10</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="red"></i></td>
-                                    <td>8</td>
-                                    <td>Largo Town Center</td>
-                                    <td>14</td>
-                                </tr>
-                            </table>
-                        </span>
-                    </div>
-                    <ul>
-                        <li><a><i></i>Grosvenor</a></li>
-                        <li class="even"><a><i></i>Medical Center</a></li>
-                        <li><a><i></i>Bethesda</a></li>
-                        <li class="even"><a><i></i>Friendship Heights</a></li>
-                        <li><a><i></i>Tenleytown</a></li>
-                        <li class="even"><a><i></i>Van Ness UDC</a></li>
-                        <li><a><i></i>Cleveland Park</a></li>
-                        <li class="even"><a><i></i>Woodley Park Zoo</a></li>
-                        <li><a><i></i>Dupont Circle</a></li>
-                        <li class="even"><a><i></i>Farragut North</a></li>
-                        <li><a><i></i>Metro Center</a></li>
-                        <li class="even"><a><i></i>Gallery Place</a></li>
-                        <li><a><i></i>Judiciary Square</a></li>
-                        <li class="even"><a><i></i>Union Station</a></li>
-                        <li><a><i></i>New York Ave</a></li>
-                        <li class="even"><a><i></i>Rhode Island Ave</a></li>
-                        <li><a><i></i>Brookland</a></li>
-                        <li class="even"><a><i></i>Fort Totten</a></li>
-                        <li><a><i></i>Takoma</a></li>
-                        <li class="even"><a><i></i>Silver Spring</a></li>
-                        <li><a><i></i>Forest Glen</a></li>
-                        <li class="even"><a><i></i>Wheaton</a></li>
-                        <li><a><i></i>Glenmont</a></li>
-                    </ul>  
+                    
                 </div>
             </div>
             <div class="swiper-slide metroLine metroLine-orange">
                 <div class="swiper-content">
-                    <ul class="">
-                        <li><a><i></i>Vienna</a></li>
-                        <li class="even"><a><i></i>Dunn-Loring</a></li>
-                        <li><a><i></i>West Falls Church</a></li>
-                        <li class="even"><a><i></i>East Falls Church</a></li>
-                        <li><a><i></i>Ballston</a></li>
-                        <li class="even"><a><i></i>Virginia Square</a></li>
-                        <li><a><i></i>Clarendon</a></li>
-                        <li class="even"><a><i></i>Court House</a></li>
-                        <li><a><i></i>Rosslyn</a></li>
-                        <li class="even"><a><i></i>Foggy Bottom</a></li>
-                        <li><a><i></i>Farragut West</a></li>
-                        <li class="even"><a><i></i>McPhearson Square</a></li>
-                        <li><a><i></i>Metro Center</a></li>
-                        <li class="even"><a><i></i>Farragut North</a></li>
-                        <li><a><i></i>Metro Center</a></li>
-                        <li class="even"><a><i></i>Gallery Place</a></li>
-                        <li><a><i></i>Judiciary Square</a></li>
-                        <li class="even"><a><i></i>Union Station</a></li>
-                        <li><a><i></i>New York Ave</a></li>
-                        <li class="even"><a><i></i>Rhode Island Ave</a></li>
-                        <li><a><i></i>Brookland</a></li>
-                        <li class="even"><a><i></i>Fort Totten</a></li>
-                        <li><a><i></i>Takoma</a></li>
-                    </ul>
+
                 </div>
             </div>
             <div class="swiper-slide metroLine metroLine-blue">
                 <div class="swiper-content">
-                    <ul class="">
-                        <li><a><i></i>Largo Town Center</a></li>
-                        <li class="even"><a><i></i>Morgan Blvd</a></li>
-                        <li><a><i></i>Addison Road</a></li>
-                        <li class="even"><a><i></i>Capitol Heights</a></li>
-                        <li><a><i></i>Benning Road</a></li>
-                        <li class="even"><a><i></i>Virginia Square</a></li>
-                        <li><a><i></i>Clarendon</a></li>
-                        <li class="even"><a><i></i>Court House</a></li>
-                        <li><a><i></i>Rosslyn</a></li>
-                        <li class="even"><a><i></i>Foggy Bottom</a></li>
-                        <li><a><i></i>Farragut West</a></li>
-                        <li class="even"><a><i></i>McPhearson Square</a></li>
-                        <li><a><i></i>Metro Center</a></li>
-                        <li class="even"><a><i></i>Farragut North</a></li>
-                        <li><a><i></i>Metro Center</a></li>
-                        <li class="even"><a><i></i>Gallery Place</a></li>
-                        <li><a><i></i>Judiciary Square</a></li>
-                        <li class="even"><a><i></i>Union Station</a></li>
-                        <li><a><i></i>New York Ave</a></li>
-                        <li class="even"><a><i></i>Rhode Island Ave</a></li>
-                        <li><a><i></i>Brookland</a></li>
-                        <li class="even"><a><i></i>Fort Totten</a></li>
-                        <li><a><i></i>Takoma</a></li>
-                    </ul>  
+ 
                 </div>
             </div>
             <div class="swiper-slide metroLine metroLine-green">
                 <div class="swiper-content">
-                    <ul class="">
-                        <li><a><i></i>Largo Town Center</a></li>
-                        <li class="even"><a><i></i>Morgan Blvd</a></li>
-                        <li><a><i></i>Addison Road</a></li>
-                        <li class="even"><a><i></i>Capitol Heights</a></li>
-                        <li><a><i></i>Benning Road</a></li>
-                        <li class="even"><a><i></i>Virginia Square</a></li>
-                        <li><a><i></i>Clarendon</a></li>
-                        <li class="even"><a><i></i>Court House</a></li>
-                        <li><a><i></i>Rosslyn</a></li>
-                        <li class="even"><a><i></i>Foggy Bottom</a></li>
-                        <li><a><i></i>Farragut West</a></li>
-                        <li class="even"><a><i></i>McPhearson Square</a></li>
-                        <li><a><i></i>Metro Center</a></li>
-                        <li class="even"><a><i></i>Farragut North</a></li>
-                        <li><a><i></i>Metro Center</a></li>
-                        <li class="even"><a><i></i>Gallery Place</a></li>
-                        <li><a><i></i>Judiciary Square</a></li>
-                        <li class="even"><a><i></i>Union Station</a></li>
-                        <li><a><i></i>New York Ave</a></li>
-                        <li class="even"><a><i></i>Rhode Island Ave</a></li>
-                        <li><a><i></i>Brookland</a></li>
-                        <li class="even"><a><i></i>Fort Totten</a></li>
-                        <li><a><i></i>Takoma</a></li>
-                    </ul> 
+
                 </div>
             </div>
             <div class="swiper-slide metroLine metroLine-yellow">
                 <div class="swiper-content">
-                    <ul class="">
-                        <li><a><i></i>Largo Town Center</a></li>
-                        <li class="even"><a><i></i>Morgan Blvd</a></li>
-                        <li><a><i></i>Addison Road</a></li>
-                        <li class="even"><a><i></i>Capitol Heights</a></li>
-                        <li><a><i></i>Benning Road</a></li>
-                        <li class="even"><a><i></i>Virginia Square</a></li>
-                        <li><a><i></i>Clarendon</a></li>
-                        <li class="even"><a><i></i>Court House</a></li>
-                        <li><a><i></i>Rosslyn</a></li>
-                        <li class="even"><a><i></i>Foggy Bottom</a></li>
-                        <li><a><i></i>Farragut West</a></li>
-                        <li class="even"><a><i></i>McPhearson Square</a></li>
-                        <li><a><i></i>Metro Center</a></li>
-                        <li class="even"><a><i></i>Farragut North</a></li>
-                        <li><a><i></i>Metro Center</a></li>
-                        <li class="even"><a><i></i>Gallery Place</a></li>
-                        <li><a><i></i>Judiciary Square</a></li>
-                        <li class="even"><a><i></i>Union Station</a></li>
-                        <li><a><i></i>New York Ave</a></li>
-                        <li class="even"><a><i></i>Rhode Island Ave</a></li>
-                        <li><a><i></i>Brookland</a></li>
-                        <li class="even"><a><i></i>Fort Totten</a></li>
-                        <li><a><i></i>Takoma</a></li>
-                    </ul>  
+
                 </div>
             </div>
           </div>
@@ -274,26 +92,59 @@
     </div>
     
     <script src="js/zepto.js"></script>
+    <script src="js/zepto-slide-transition.min.js"></script>
     <script src="js/idangerous.swiper.js"></script>
+    <script src="js/stations.json.js"></script>
     <script>
-        //$(".swiper-container").width($(window).width());
-        //$(".swiper-container").height($(window).height());
-        //var pageX = 0;
-        //var lastX = 0;
-        //document.ontouchmove = function(e){ 
-        //    var currentPageX = document.getElementById("MainContent").scrollLeft;
-        //    $("#log").prepend(lastX + " - " + currentPageX + "<br/>");
-        //    if (currentPageX !== lastX){
-        //        e.preventDefault();
-        //    }
-        //    lastX = currentPageX;
-        //}
-
-                
+        
+        //Populating stations
+        populateStation($(".metroLine-red .swiper-content"), stations.RD);
+        populateStation($(".metroLine-orange .swiper-content"), stations.OR);
+        populateStation($(".metroLine-blue .swiper-content"), stations.BL);
+        populateStation($(".metroLine-green .swiper-content"), stations.GR);
+        populateStation($(".metroLine-yellow .swiper-content"), stations.YL);
+        
+        function populateStation(objContainer, arrStations) {
+            for (var i = 0; i<arrStations.length; i++) {
+                var code = arrStations[i].Code;
+                objContainer.append(getContainerTrains(code, 'up'));
+                objContainer.append("<ul><li onclick=\"showTrains('"+code+"')\"><span><i></i>" + arrStations[i].Name + "</span></li></ul>");
+                objContainer.append(getContainerTrains(code, 'down'));
+            }    
+        }
+        
+        function getContainerTrains(stationID, direction) {
+            var result = '<div class="trains trains-'+direction+' '+stationID+'Trains '+stationID+'Trains-'+direction+'">';
+            
+            if (direction == 'down')
+                result += "<div class='arrow-up'></div>";
+            
+            result += "<span><table><tr><th>Line</th><th>Cars</th><th>To</th><th>Minutes</th></tr></table></span>";
+            
+            if (direction == 'up')
+                result += "<div class='arrow-down'></div>";
+            
+            result += '</div>';
+            return result;
+        }
+        
+        var currentStation = "";
+        function showTrains(stationCode) { 
+            if (currentStation == stationCode)
+                return;
+            
+            if (currentStation != "")
+                $("." + currentStation + "Trains").hide(); 
+            $("." + stationCode + "Trains-down").show();
+            $("." + stationCode + "Trains-up").show();
+            
+            
+            currentStation = stationCode;
+        }
+        
         
         var mySwiper = new Swiper('.swiper-container',{
             loop:false,
-            grabCursor: true,
             onSlideChangeStart: function(){
                 $(".tabs .active").removeClass('active');
                 $(".tabs div").eq(mySwiper.activeIndex).addClass('active');
