@@ -1156,8 +1156,6 @@ var Swiper = function (selector, params) {
         if (!_this.isTouched || params.onlyExternal) return;
         if (isTouchEvent && event.type=='mousemove') return;
         if (Math.abs(pageStartY - _this.container.scrollTop) != 0) return;
-        
-        $("#log").prepend(pageStartY + " - " + _this.container.scrollTop + "<br/>");
 
         var pageX = isTouchEvent ? event.targetTouches[0].pageX : (event.pageX || event.clientX);
         var pageY = isTouchEvent ? event.targetTouches[0].pageY : (event.pageY || event.clientY);
