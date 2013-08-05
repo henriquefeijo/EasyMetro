@@ -270,13 +270,12 @@
         //var pageX = 0;
         var lastX = 0;
         document.ontouchmove = function(e){ 
-            var currentX = e.touches[0].clientX;
             var currentPageX = document.getElementById("MainContent").scrollLeft;
-            $("#log").prepend(lastX + " - " + currentX +  " - " + currentPageX + "<br/>");
-            if (currentX !== lastX){
+            $("#log").prepend(lastX + " - " + currentPageX + "<br/>");
+            if (currentPageX !== lastX){
                 e.preventDefault();
             }
-            lastX = currentY;
+            lastX = currentPageX;
         }
 
                 
