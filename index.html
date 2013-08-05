@@ -268,15 +268,15 @@
         //$(".swiper-container").width($(window).width());
         //$(".swiper-container").height($(window).height());
         //var pageX = 0;
-        var lastY = 0;
+        var lastX = 0;
         document.ontouchmove = function(e){ 
-            var currentY = e.touches[0].clientY;
-            var currentPageY = document.getElementById("MainContent").scrollLeft;
-            $("#log").prepend(lastY + " - " + currentY +  " - " + currentPageY + "<br/>");
-            if (currentY !== lastY){
+            var currentX = e.touches[0].clientX;
+            var currentPageX = document.getElementById("MainContent").scrollLeft;
+            $("#log").prepend(lastX + " - " + currentX +  " - " + currentPageX + "<br/>");
+            if (currentX !== lastX){
                 e.preventDefault();
             }
-            lastY = currentY;
+            lastX = currentY;
         }
 
                 
