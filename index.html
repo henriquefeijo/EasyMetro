@@ -270,7 +270,7 @@
             var currentY = e.touches[0].clientY;
             if (currentY !== lastY){
                 // moved vertically
-                return;
+                e.preventDefault();
             }
             lastY = currentY;
             //insert code if you want to execute something when an horizontal touchmove is made
