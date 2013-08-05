@@ -266,8 +266,14 @@
         //$(".swiper-container").width($(window).width());
         //$(".swiper-container").height($(window).height());
         //var pageX = 0;
-        $("#MainContent").scroll(function () {
-            this.scrollLeft = 0;
+        $("#MainContent").bind('touchmove', function (e){
+            var currentY = e.touches[0].clientY;
+            if (currentY !== lastY){
+                // moved vertically
+                return;
+            }
+            lastY = currentY;
+            //insert code if you want to execute something when an horizontal touchmove is made
         });
                 
         
