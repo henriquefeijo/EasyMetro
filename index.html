@@ -265,6 +265,12 @@
     <script>
         //$(".swiper-container").width($(window).width());
         //$(".swiper-container").height($(window).height());
+        //var pageX = 0;
+        $("#MainContent").scroll(function () {
+            this.scrollLeft = 0;
+        });
+                
+        
         var mySwiper = new Swiper('.swiper-container',{
             loop:false,
             grabCursor: true,
