@@ -28,10 +28,15 @@
         .trains th:nth-child(3) { width: 200px; }
         .trains th:nth-child(4) { width: 40px; }
         .trains span { display:block; background-color: #4a4e57; padding:8px; color:#fff; box-shadow:0 0px 8px -2px #000 inset; }
-        .trains th { font-family: arial; font-size: 9px; text-align:center; }
+        .trains th { font-family: arial; font-size: 9px; text-align:center; background: #777; }
         .trains td { font-family: arial; font-size: 19px; text-align:center; }
-        .trains td i { border-radius: 5px; width:16px; height:19px; display:block; float:left; margin-left:9px;}
-        .trains td i.red { background-color: #D62929; }
+        .trains td i { border-radius: 5px; width:16px; height:16px; display:block; float:left; margin-left:9px;}
+        .trains td i.RD { background-color: #D62929; }
+        .trains td i.OR { background-color: #EF9431; }
+        .trains td i.BL { background-color: #006BAD; }
+        .trains td i.YL { background-color: #FFDE08; }
+        .trains td i.GR { background-color: #00844A; }
+        .trains td i.NA { border: solid 2px #333; width: 14px; height: 14px; }
         .trains-up { margin-bottom:-15px; }
         .trains-down { margin-top:-15px; }
         
@@ -119,7 +124,7 @@
             if (direction == 'down')
                 result += "<div class='arrow-up'></div>";
             
-            result += "<span><table><tr><th>Line</th><th>Cars</th><th>To</th><th>Minutes</th></tr></table></span>";
+            result += "<span><table><thead><tr><th>Line</th><th>Cars</th><th>To</th><th>Minutes</th></tr></thead><tbody></tbody></table></span>";
             
             if (direction == 'up')
                 result += "<div class='arrow-down'></div>";
@@ -133,15 +138,69 @@
             if (currentStation == stationCode)
                 return;
             
-            if (currentStation != "")
-                $("." + currentStation + "Trains").hide(); 
-            $("." + stationCode + "Trains-down").show();
-            $("." + stationCode + "Trains-up").show();
+            if (currentStation != "") {
+                var objCurrStation = $("." + currentStation + "Trains");
+                objCurrStation.hide();
+                $("tbody tr", objCurrStation).remove();
+            }
             
+            getStationData(stationCode);
             
+            //for (var i = 0; i<trains.length; i++) {
+            //    var train = trains[i];
+            //    var content = "<tr><td><i class='" + train.Line + "'></i></td><td>" + train.Car + "</td><td>" + train.DestinationName + "</td><td>" + train.Min + "</td></tr>";
+            //    if (train.Group == 1)
+            //        $("table tbody", trainsDown).append(content);
+            //    else
+            //        $("table tbody", trainsUp).append(content);
+            //}
+            console.log(currentStation + " - " + stationCode);
             currentStation = stationCode;
         }
         
+        function showTrainData(stationCode, trains) {
+            var trainsUp = $("." + stationCode + "Trains-up");
+            var trainsDown = $("." + stationCode + "Trains-down");
+            
+            trainsUp.show();
+            trainsDown.show();
+            
+            for (var i = 0; i<trains.length; i++) {
+                var train = trains[i];
+                if (train.Line == "")
+                    train.Line = "NA";
+                if (train.Car == "")
+                    train.Car = "?";
+                if (train.DestinationName == "")
+                    train.DestinationName = "Train";
+                if (train.Min == "")
+                    train.Min = "?";
+                var content = "<tr><td><i class='" + train.Line + "'></i></td><td>" + train.Car + "</td><td>" + train.DestinationName + "</td><td>" + train.Min + "</td></tr>";
+                if (train.Group == 1)
+                    $("table tbody", trainsDown).append(content);
+                else
+                    $("table tbody", trainsUp).append(content);
+            }
+            console.log(currentStation + " - " + stationCode);
+            currentStation = stationCode;
+        }
+        
+        function getStationData(stationCode) {
+            $.ajax({
+                //url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
+                url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
+                type: 'GET',
+                dataType: 'json',
+                success: (function ( data ) {
+                    showTrainData(stationCode, data.Trains);
+                    console.log(data);
+                }),
+                error: function(xhr, type){  alert('error:' + type);
+                    console.log(xhr);
+                    console.log(type);
+                }
+            });
+        }
         
         var mySwiper = new Swiper('.swiper-container',{
             loop:false,
