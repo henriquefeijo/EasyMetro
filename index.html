@@ -23,11 +23,11 @@
         .metroLine li span { display:block; white-space:nowrap; padding:15px 0px 15px 8px; font-family: arial; font-size:20px; font-weight: bold; }
         .metroLine li span i { float:left; position:absolute; left:2px; z-index:100; background: #FFFFFF; border: 4px solid #000000; border-radius: 14px; display: block; height: 14px; width: 14px; }
         
-        .trains { z-index:1000; position:relative; display:none; }
+        .trains { z-index:1000; position:relative; display:none; margin-top: -15px; }
         .trains th:nth-child(1), .trains th:nth-child(2) { width:34px; }
         .trains th:nth-child(3) { width: 200px; }
         .trains th:nth-child(4) { width: 40px; }
-        .trains span { display:block; background-color: #4a4e57; padding:8px; color:#fff; box-shadow:0 0px 8px -2px #000 inset; }
+        .trains span { display:block; background-color: #4a4e57; padding:8px; color:#fff; /*box-shadow:0 0px 8px -2px #000 inset;*/ }
         .trains th { font-family: arial; font-size: 9px; text-align:center; background: #777; }
         .trains td { font-family: arial; font-size: 19px; text-align:center; }
         .trains td i { border-radius: 5px; width:16px; height:16px; display:block; float:left; margin-left:9px;}
@@ -37,8 +37,8 @@
         .trains td i.YL { background-color: #FFDE08; }
         .trains td i.GR { background-color: #00844A; }
         .trains td i.NA { border: solid 2px #333; width: 14px; height: 14px; }
-        .trains-up { margin-bottom:-15px; }
-        .trains-down { margin-top:-15px; }
+        .trains-up {  }
+        .trains-down { margin-top:-10px; }
         
         .arrow-up { margin-left:300px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #4a4e57; }
         .arrow-down { margin-left:300px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid #4a4e57; }
@@ -112,22 +112,21 @@
         function populateStation(objContainer, arrStations) {
             for (var i = 0; i<arrStations.length; i++) {
                 var code = arrStations[i].Code;
-                objContainer.append(getContainerTrains(code, 'up'));
                 objContainer.append("<ul><li onclick=\"showTrains('"+code+"')\"><span><i></i>" + arrStations[i].Name + "</span></li></ul>");
-                objContainer.append(getContainerTrains(code, 'down'));
+                objContainer.append("<div id='"+code+"Trains' class='trains'>" + getContainerTrains(code, 'up') + getContainerTrains(code, 'down') + "</div>");
             }    
         }
         
         function getContainerTrains(stationID, direction) {
-            var result = '<div class="trains trains-'+direction+' '+stationID+'Trains '+stationID+'Trains-'+direction+'">';
+            var result = '<div class=" trains-'+direction+' '+stationID+'Trains '+stationID+'Trains-'+direction+'">';
             
-            if (direction == 'down')
-                result += "<div class='arrow-up'></div>";
+            //if (direction == 'down')
+            //    result += "<div class='arrow-up'></div>";
             
             result += "<span><table><thead><tr><th>Line</th><th>Cars</th><th>To</th><th>Minutes</th></tr></thead><tbody></tbody></table></span>";
             
-            if (direction == 'up')
-                result += "<div class='arrow-down'></div>";
+            //if (direction == 'up')
+            //    result += "<div class='arrow-down'></div>";
             
             result += '</div>';
             return result;
@@ -135,35 +134,36 @@
         
         var currentStation = "";
         function showTrains(stationCode) { 
-            if (currentStation == stationCode)
-                return;
+            //if (currentStation == stationCode)
+            //    return;
             
-            if (currentStation != "") {
-                var objCurrStation = $("." + currentStation + "Trains");
-                objCurrStation.hide();
-                $("tbody tr", objCurrStation).remove();
-            }
+            //if (currentStation != "") {
+            //    var objCurrStation = $("#" + currentStation + "Trains");
+            //    if (currentStation == stationCode)
+            //        objCurrStation.slideUp();
+                //objCurrStation.hide();
+                //$("tbody tr", objCurrStation).remove();
+            //}
             
             getStationData(stationCode);
-            
-            //for (var i = 0; i<trains.length; i++) {
-            //    var train = trains[i];
-            //    var content = "<tr><td><i class='" + train.Line + "'></i></td><td>" + train.Car + "</td><td>" + train.DestinationName + "</td><td>" + train.Min + "</td></tr>";
-            //    if (train.Group == 1)
-            //        $("table tbody", trainsDown).append(content);
-            //    else
-            //        $("table tbody", trainsUp).append(content);
-            //}
+
             console.log(currentStation + " - " + stationCode);
             currentStation = stationCode;
         }
         
         function showTrainData(stationCode, trains) {
+            
+            var trainsContainer = $("#" + stationCode + "Trains");
+            
+            if (trainsContainer.css("display") == "block") {
+                trainsContainer.slideUp('fast');
+                setTimeout(function() { $("tbody tr", trainsContainer).remove(); }, 500);
+                
+                return;
+            }
+            
             var trainsUp = $("." + stationCode + "Trains-up");
             var trainsDown = $("." + stationCode + "Trains-down");
-            
-            trainsUp.show();
-            trainsDown.show();
             
             for (var i = 0; i<trains.length; i++) {
                 var train = trains[i];
@@ -181,7 +181,9 @@
                 else
                     $("table tbody", trainsUp).append(content);
             }
-            console.log(currentStation + " - " + stationCode);
+           
+            trainsContainer.slideDown('fast');
+            //console.log(currentStation + " - " + stationCode);
             currentStation = stationCode;
         }
         
