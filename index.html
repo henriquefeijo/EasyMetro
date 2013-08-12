@@ -8,50 +8,71 @@
     <link rel="stylesheet" href="css/idangerous.swiper.css">
     <style>
         body, .app-wrapper { padding:0px; margin:0px; width: 360px; padding:0px; overflow:hidden; height:100%; }
-        .swiper-container { /*border: solid 1px black;*/ width: 360px; float:left; margin-top:0px; z-index:100; overflow:hidden; }
+        .swiper-container { /*border: solid 1px black;*/ width: 360px; float:left; margin-top:0px; z-index:100; overflow:hidden; background: #333333; }
         .swiper-wrapper { overflow:hidden; }
-        .swiper-slide { overflow-y:scroll; overflow-x:hidden;  }
-        .swiper-content {  padding:20px 0px; }
+        .swiper-slide { overflow-y:scroll; overflow-x:hidden; }
+        .swiper-content {   }
         
-        .metroLine ul { overflow:hidden; padding:0px; margin:0px; display:block; width:280px; position:relative; margin-left:60px; z-index:10; }
-        .metroLine-red ul { background-color:#D62929; }
-        .metroLine-orange ul { background-color:#EF9431; }
-        .metroLine-blue ul { background-color:#006BAD; }
-        .metroLine-green ul { background-color:#00844A; }
-        .metroLine-yellow ul { background-color:#FFDE08; }
-        .metroLine li { margin-left:26px; list-style-type:none; display:block; overflow:hidden; width:330px;  background-color:#FFF;  }
-        .metroLine li span { display:block; white-space:nowrap; padding:15px 0px 15px 8px; font-family: arial; font-size:20px; font-weight: bold; }
-        .metroLine li span i { float:left; position:absolute; left:2px; z-index:100; background: #FFFFFF; border: 4px solid #000000; border-radius: 14px; display: block; height: 14px; width: 14px; }
-        
-        .trains { z-index:1000; position:relative; display:none; margin-top: -15px; }
-        .trains th:nth-child(1), .trains th:nth-child(2) { width:34px; }
-        .trains th:nth-child(3) { width: 200px; }
-        .trains th:nth-child(4) { width: 40px; }
-        .trains span { display:block; background-color: #4a4e57; padding:8px; color:#fff; /*box-shadow:0 0px 8px -2px #000 inset;*/ }
-        .trains th { font-family: arial; font-size: 9px; text-align:center; background: #777; }
-        .trains td { font-family: arial; font-size: 19px; text-align:center; }
-        .trains td i { border-radius: 5px; width:16px; height:16px; display:block; float:left; margin-left:9px;}
-        .trains td i.RD { background-color: #D62929; }
-        .trains td i.OR { background-color: #EF9431; }
-        .trains td i.BL { background-color: #006BAD; }
-        .trains td i.YL { background-color: #FFDE08; }
-        .trains td i.GR { background-color: #00844A; }
-        .trains td i.NA { border: solid 2px #333; width: 14px; height: 14px; }
-        .trains-up {  }
-        .trains-down { margin-top:-10px; }
+        .metroLine { margin:18px; padding:20px 0px; background-color:#fff; border-radius:10px; overflow:hidden; }
+        .metroLine div { display:block; white-space:nowrap; overflow:hidden; padding-left:40px;  font-family: arial; font-size:20px; font-weight: bold; }
+        .metroLine div span { float:left; display:block; background-color:#D62929; width:26px; margin-right:10px; height:51px; }
+        .metroLine div span i { float:left; margin:14px 2px; z-index:100; background: #FFFFFF; border: 4px solid #000000; border-radius: 14px; display: block; height: 14px; width: 14px; }
+        .metroLine div p { margin:13px; white-space:nowrap; }
+        .metroLine-red div span { background-color:#D62929; }
+        .metroLine-orange div span { background-color:#EF9431; }
+        .metroLine-blue div span { background-color:#006BAD; }
+        .metroLine-green div span { background-color:#00844A; }
+        .metroLine-yellow div span { background-color:#FFDE08; }
         
         .arrow-up { margin-left:300px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #4a4e57; }
         .arrow-down { margin-left:300px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid #4a4e57; }
         
-        .tabs { background: #DDDDDD; height:44px; float:left; z-index:1000; width: 362px; }
-        .tabs div { float:left; display:block; padding:10px 21px; }
-        .tabs div.active { background: #FFF; box-shadow: none; border: solid 2px #333; border-radius:12px 12px 0px 0px; border-bottom:0px; padding: 8px 19px 6px 19px;  }
-        .tabs div span { float:left; background: #FFFFFF; border: 3px solid #000000; border-radius: 10px; display: block; height: 24px; width: 24px; }
-        .tabs div.red span { background-color:#D62929; }
+        .tabs { background-color:#3f3f41; height:44px; float:left; z-index:1000; width: 362px; }
+        .tabs div { float:left; display:block; padding:9px 21px; }
+        .tabs div.active { border-bottom: solid 4px #33b5e4; padding-bottom: 7px; }
+        .tabs div span { float:left; background: #FFFFFF; border: 0px solid #000000; border-radius: 12px; display: block; height: 24px; width: 24px; }
+        .tabs div.red span { background-color:#f60e07; }
         .tabs div.orange span { background-color:#EF9431; }
         .tabs div.blue span { background-color:#006BAD; }
         .tabs div.green span { background-color:#00844A; }
         .tabs div.yellow span { background-color:#FFDE08; }
+        
+        #overlay { background-color:#777676; position:absolute; z-index:1000; left:0px; top:0px; opacity:0.65; display:none; }
+        #popup { background:#3c3c3c; position:absolute; z-index:1100; top:50%; left:10px; width:324px; border-radius:10px; padding:8px 8px 4px 8px; box-shadow: 0 0 3px 1px #3c3c3c;  overflow:hidden; display: none;}
+        #popupContent { background:#FFFFFF;  border-radius:8px; font-family: arial;  overflow:hidden; text-align:center; box-shadow: 0 0 3px 0px #888 inset;}
+        #popupTitle { font-size:20px; font-weight: bold;  overflow:hidden; display:inline-block; vertical-align:top; margin-top:6px; }
+        #popupTitle span { display:inline-block; background-color:#ffffff; width:25px; height:30px; }
+        #popupTitle span i {  margin:4px 2px; z-index:100; background: #FFFFFF; border: 4px solid #000000; border-radius: 13px; display: inline-block; height: 13px; width: 13px; }
+        #popupTitle p { margin:4px 4px 4px 8px; white-space:nowrap; display:inline-block; vertical-align:top; }
+        #popupContent hr { margin:4px 20px; background: #AAAAAA; border: none; height: 1px; }
+        #popupTrains { padding:2px 8px; border-collapse: collapse; }
+        #popupTrains th { font-size:10px; background-color: #eee; margin:0px; padding:0px; border-collapse:collapse;}
+        #popupTrains th:nth-child(1), .trains th:nth-child(2) { width:34px; }
+        #popupTrains th:nth-child(3) { width: 190px; }
+        #popupTrains th:nth-child(4) { width: 40px; }
+        #popupTrains td { margin:0px; }
+        #popupTrains hr { margin:4px 20px; background: #AAAAAA; border: none; height: 1px; }
+        
+        #popup.station-red #popupTitle span { background-color:#D62929; }
+        #popup.station-orange #popupTitle span { background-color:#EF9431; }
+        #popup.station-blue #popupTitle span { background-color:#006BAD; }
+        #popup.station-green #popupTitle span { background-color:#00844A; }
+        #popup.station-yellow #popupTitle span { background-color:#FFDE08; }
+        
+        #popupContent td i { border-radius: 5px; width:16px; height:16px; display:block; float:left; margin-left:9px;}
+        #popupContent td i.RD { background-color: #D62929; }
+        #popupContent td i.OR { background-color: #EF9431; }
+        #popupContent td i.BL { background-color: #006BAD; }
+        #popupContent td i.YL { background-color: #FFDE08; }
+        #popupContent td i.GR { background-color: #00844A; }
+        
+        #popupFooter { font-size:10px; color:#ffffff; font-family:arial; margin:4px 8px 0px 8px; }
+        #popupFooter img { float: left; }
+        #popupFooter span { float: left;  padding: 1px 3px; }
+        
+        #loading { background:#fff; display:none; width:230px; position:absolute; left:60px; border-radius: 13px; z-index:1100; height:30px; padding-top:15px; font-family: arial; font-size:14px; }
+        #loading img { float:left; margin-left:60px; }
+        #loading span { float:left; margin-left: 10px; }
     </style>
     <title>Demo</title>
 </head>
@@ -66,34 +87,59 @@
         </div>
         <div id="MainContent" class="swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide metroLine metroLine-red">
+            <div class="swiper-slide">
                 <div class="swiper-content">
-                    
+                    <div class="metroLine metroLine-red"></div>
                 </div>
             </div>
-            <div class="swiper-slide metroLine metroLine-orange">
+            <div class="swiper-slide">
                 <div class="swiper-content">
-
+                    <div class=" metroLine metroLine-orange"></div>
                 </div>
             </div>
-            <div class="swiper-slide metroLine metroLine-blue">
+            <div class="swiper-slide">
                 <div class="swiper-content">
- 
+                    <div class=" metroLine metroLine-blue"></div>
                 </div>
             </div>
-            <div class="swiper-slide metroLine metroLine-green">
+            <div class="swiper-slide">
                 <div class="swiper-content">
-
+                    <div class=" metroLine metroLine-green"></div>
                 </div>
             </div>
-            <div class="swiper-slide metroLine metroLine-yellow">
+            <div class="swiper-slide">
                 <div class="swiper-content">
-
+                    <div class=" metroLine metroLine-yellow"></div>
                 </div>
             </div>
           </div>
         </div>
     
+    </div>
+    
+    <div id="overlay"></div>
+    <div id="loading"><img src="img/ajax-loader.gif" /><span>Loading</span></div>
+    <div id="popup">
+        <div id="popupContent">
+            <div id="popupTitle"><span><i></i></span><p>Farragut North</p></div>
+            <hr />
+            <div id="popupTrains">
+                <table id="trains-up">
+                    <thead><tr><th>Line</th><th>Cars</th><th>To</th><th>Minutes</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+                <hr />
+                <table id="trains-down">
+                    <thead><tr><th>Line</th><th>Cars</th><th>To</th><th>Minutes</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <table id="popupFooter"><tr>
+            <td style="width:60px;" onclick="refreshTrains()"><img src="img/refresh.png" /><span>Refresh</span></td>
+            <td style="width:178px;text-align:center;padding-right:8px;"> Last Updated: <i class="lastUpdated">11:13:34 AM</i></td>
+            <td style="width:50px;" onclick="closePopup()"><img src="img/close.png" /><span>Close</span></td>
+        </tr></table>
     </div>
     
     <script src="js/zepto.js"></script>
@@ -103,73 +149,40 @@
     <script>
         
         //Populating stations
-        populateStation($(".metroLine-red .swiper-content"), stations.RD);
-        populateStation($(".metroLine-orange .swiper-content"), stations.OR);
-        populateStation($(".metroLine-blue .swiper-content"), stations.BL);
-        populateStation($(".metroLine-green .swiper-content"), stations.GR);
-        populateStation($(".metroLine-yellow .swiper-content"), stations.YL);
+        populateStation($(".metroLine-red"), stations.RD, "red");
+        populateStation($(".metroLine-orange"), stations.OR, "orange");
+        populateStation($(".metroLine-blue"), stations.BL, "blue");
+        populateStation($(".metroLine-green"), stations.GR, "green");
+        populateStation($(".metroLine-yellow"), stations.YL, "yellow");
         
-        function populateStation(objContainer, arrStations) {
+        function populateStation(objContainer, arrStations, line) {
             for (var i = 0; i<arrStations.length; i++) {
                 var code = arrStations[i].Code;
-                objContainer.append("<ul><li onclick=\"showTrains('"+code+"')\"><span><i></i>" + arrStations[i].Name + "</span></li></ul>");
-                objContainer.append("<div id='"+code+"Trains' class='trains'>" + getContainerTrains(code, 'up') + getContainerTrains(code, 'down') + "</div>");
+                objContainer.append("<div onclick=\"showTrains('"+code+"', '"+line+"')\"><span><i></i></span><p>" + arrStations[i].Name + "</p></div>");
             }    
         }
         
         function getContainerTrains(stationID, direction) {
             var result = '<div class=" trains-'+direction+' '+stationID+'Trains '+stationID+'Trains-'+direction+'">';
-            
-            //if (direction == 'down')
-            //    result += "<div class='arrow-up'></div>";
-            
             result += "<span><table><thead><tr><th>Line</th><th>Cars</th><th>To</th><th>Minutes</th></tr></thead><tbody></tbody></table></span>";
-            
-            //if (direction == 'up')
-            //    result += "<div class='arrow-down'></div>";
-            
             result += '</div>';
             return result;
         }
         
         var currentStation = "";
-        function showTrains(stationCode) { 
-            //if (currentStation == stationCode)
-            //    return;
-            
-            //if (currentStation != "") {
-            //    var objCurrStation = $("#" + currentStation + "Trains");
-            //    if (currentStation == stationCode)
-            //        objCurrStation.slideUp();
-                //objCurrStation.hide();
-                //$("tbody tr", objCurrStation).remove();
-            //}
-            
-            getStationData(stationCode);
-
+        function showTrains(stationCode, line) { 
+            getStationData(stationCode, line);
             console.log(currentStation + " - " + stationCode);
-            currentStation = stationCode;
         }
         
-        function showTrainData(stationCode, trains) {
+        function showTrainData(stationCode, trains, line) {
             
-            var trainsContainer = $("#" + stationCode + "Trains");
-            
-            if (trainsContainer.css("display") == "block") {
-                trainsContainer.slideUp('fast');
-                setTimeout(function() { $("tbody tr", trainsContainer).remove(); }, 500);
-                
-                return;
-            }
-            
-            var trainsUp = $("." + stationCode + "Trains-up");
-            var trainsDown = $("." + stationCode + "Trains-down");
-            
+            $("#popup").removeClass().addClass("station-"+line);
             for (var i = 0; i<trains.length; i++) {
                 var train = trains[i];
                 if (train.Line == "")
                     train.Line = "NA";
-                if (train.Car == "")
+                if (train.Car == "" || train.Car == null)
                     train.Car = "?";
                 if (train.DestinationName == "")
                     train.DestinationName = "Train";
@@ -177,24 +190,25 @@
                     train.Min = "?";
                 var content = "<tr><td><i class='" + train.Line + "'></i></td><td>" + train.Car + "</td><td>" + train.DestinationName + "</td><td>" + train.Min + "</td></tr>";
                 if (train.Group == 1)
-                    $("table tbody", trainsDown).append(content);
+                    $("#trains-down tbody").append(content);
                 else
-                    $("table tbody", trainsUp).append(content);
+                    $("#trains-up tbody").append(content);
             }
-           
-            trainsContainer.slideDown('fast');
-            //console.log(currentStation + " - " + stationCode);
-            currentStation = stationCode;
+            $("#loading").hide();
+            $("#popup").show();
+            $("#popup").css("top", ($(window).height() - $("#popup").height())/2 + "px" );
         }
         
-        function getStationData(stationCode) {
+        function getStationData(stationCode, line) {
+            $("#overlay, #loading").show();
             $.ajax({
-                //url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
-                url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
+                url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
+                //url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
                 type: 'GET',
                 dataType: 'json',
                 success: (function ( data ) {
-                    showTrainData(stationCode, data.Trains);
+                    $(".lastUpdated").html(new Date().timeNow());
+                    showTrainData(stationCode, data.Trains, line);
                     console.log(data);
                 }),
                 error: function(xhr, type){  alert('error:' + type);
@@ -204,6 +218,13 @@
             });
         }
         
+        function closePopup() {
+            $("#popup, #overlay").hide();
+            //Cleaning data
+            $("#popupContent tbody").html("");
+        }
+        
+        //Swiper
         var mySwiper = new Swiper('.swiper-container',{
             loop:false,
             onSlideChangeStart: function(){
@@ -211,8 +232,15 @@
                 $(".tabs div").eq(mySwiper.activeIndex).addClass('active');
             }
         })
+        
+        //Popup functions
+        $("#overlay").css('height',$(window).height() + 'px').css('width',$(window).width() + 'px');
+        $("#loading").css("top", ($(window).height() - 50)/2 + "px" );
+        
+        //Defining swiper height
         $(".swiper-slide, .swiper-wrapper").css('height',$(window).height()-44 + 'px');
         
+        //Tabs functions
         $(".tabs div").on('touchstart mousedown',function(e){
             e.preventDefault()
             $(".tabs .active").removeClass('active')
@@ -221,7 +249,10 @@
         })
         $(".tabs div").click(function(e){
             e.preventDefault()
-          })
+        })
+        
+        
+        Date.prototype.timeNow = function(){ return ((this.getHours() < 10)?"0":"") + ((this.getHours()>12)?(this.getHours()-12):this.getHours()) +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds() + ((this.getHours()>12)?('PM'):'AM'); };
     </script>
 </body>
 </html>
