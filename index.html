@@ -202,8 +202,8 @@
         function getStationData(stationCode, line) {
             $("#overlay, #loading").show();
             $.ajax({
-                url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
-                //url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
+                //url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
+                url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
                 type: 'GET',
                 dataType: 'json',
                 success: (function ( data ) {
