@@ -37,7 +37,8 @@
         .tabs div.green span { background-color:#00844A; }
         .tabs div.yellow span { background-color:#FFDE08; }
         
-        #overlay { background-color:#777676; position:absolute; z-index:1000; left:0px; top:0px; opacity:0.65; display:none; }
+        #overlay { background-color:#777676; position:absolute; z-index:1000; left:0px; top:0px; opacity:0.65; }
+        
         #popup { background:#3c3c3c; position:absolute; z-index:1100; top:50%; left:10px; width:324px; border-radius:10px; padding:8px 8px 4px 8px; box-shadow: 0 0 3px 1px #3c3c3c;  overflow:hidden; display: none;}
         #popupContent { background:#FFFFFF;  border-radius:8px; font-family: arial;  overflow:hidden; text-align:center; box-shadow: 0 0 3px 0px #888 inset;}
         #popupTitle { font-size:20px; font-weight: bold;  overflow:hidden; display:inline-block; vertical-align:top; margin-top:6px; }
@@ -193,10 +194,11 @@
         }
         
         function getStationData(stationCode, line, stationName) {
-            $("#overlay, #loading").show();
+            showOverlay();
+            $("#loading").show();
             $.ajax({
-                url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
-                //url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
+                //url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
+                url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
                 type: 'GET',
                 dataType: 'json',
                 success: (function ( data ) {
@@ -212,9 +214,17 @@
         }
         
         function closePopup() {
-            $("#popup, #overlay").hide();
+            //$("#popup, #overlay").hide();
+            hideOverlay();
             //Cleaning data
             $("#popupContent tbody").html("");
+        }
+        
+        function showOverlay() {
+            $("body").append("<div id='overlay' style='width:"+windowHeight+"px;height:"+windowWidth+"px;'></div>")
+        }
+        function hideOverlay() {
+            $("#overlay").remove();
         }
         
         //Swiper
@@ -226,12 +236,15 @@
             }
         })
         
+        var windowHeight = $(window).height();
+        var windowWidth = $(window).width();
+        
         //Popup functions
-        $("#overlay").css('height',$(window).height() + 'px').css('width',$(window).width() + 'px');
-        $("#loading").css("top", ($(window).height() - 50)/2 + "px" );
+        $("#overlay").css('height',windowHeight + 'px').css('width',windowWidth + 'px');
+        $("#loading").css("top", (windowHeight - 50)/2 + "px" );
         
         //Defining swiper height
-        $(".swiper-slide, .swiper-wrapper").css('height',$(window).height()-44 + 'px');
+        $(".swiper-slide, .swiper-wrapper").css('height',windowHeight-44 + 'px');
         
         //Tabs functions
         $(".tabs div").on('touchstart mousedown',function(e){
