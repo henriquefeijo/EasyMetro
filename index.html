@@ -158,26 +158,19 @@
         function populateStation(objContainer, arrStations, line) {
             for (var i = 0; i<arrStations.length; i++) {
                 var code = arrStations[i].Code;
-                objContainer.append("<div onclick=\"showTrains('"+code+"', '"+line+"')\"><span><i></i></span><p>" + arrStations[i].Name + "</p></div>");
+                var name = arrStations[i].Name;
+                objContainer.append("<div onclick=\"showTrains('"+code+"', '"+line+"', '"+name.replace("'","\\'")+"')\"><span><i></i></span><p>" + name + "</p></div>");
             }    
         }
         
-        function getContainerTrains(stationID, direction) {
-            var result = '<div class=" trains-'+direction+' '+stationID+'Trains '+stationID+'Trains-'+direction+'">';
-            result += "<span><table><thead><tr><th>Line</th><th>Cars</th><th>To</th><th>Minutes</th></tr></thead><tbody></tbody></table></span>";
-            result += '</div>';
-            return result;
+        function showTrains(stationCode, line, stationName) { 
+            getStationData(stationCode, line, stationName);
         }
         
-        var currentStation = "";
-        function showTrains(stationCode, line) { 
-            getStationData(stationCode, line);
-            console.log(currentStation + " - " + stationCode);
-        }
-        
-        function showTrainData(stationCode, trains, line) {
+        function showTrainData(stationCode, trains, line, stationName) {
             
             $("#popup").removeClass().addClass("station-"+line);
+            $("#popupTitle p").text(stationName);
             for (var i = 0; i<trains.length; i++) {
                 var train = trains[i];
                 if (train.Line == "")
@@ -199,16 +192,16 @@
             $("#popup").css("top", ($(window).height() - $("#popup").height())/2 + "px" );
         }
         
-        function getStationData(stationCode, line) {
+        function getStationData(stationCode, line, stationName) {
             $("#overlay, #loading").show();
             $.ajax({
-                //url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
-                url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
+                url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
+                //url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
                 type: 'GET',
                 dataType: 'json',
                 success: (function ( data ) {
                     $(".lastUpdated").html(new Date().timeNow());
-                    showTrainData(stationCode, data.Trains, line);
+                    showTrainData(stationCode, data.Trains, line, stationName);
                     console.log(data);
                 }),
                 error: function(xhr, type){  alert('error:' + type);
