@@ -194,7 +194,7 @@
         
         function getStationData(stationCode, line, stationName) {
             showOverlay();
-            $("#loading").show();
+            showLoading();
             $.ajax({
                 //url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
                 url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
@@ -224,6 +224,12 @@
         }
         function hideOverlay() {
             $("#overlay").remove();
+        }
+        
+        function showLoading() {
+            $("#loading").show();
+            $("#loading").css("height", windowHeight + "px");
+            $("#loading").css("height", "30px");
         }
         
         //Swiper
