@@ -213,14 +213,14 @@
         }
         
         function closePopup() {
-            //$("#popup, #overlay").hide();
+            $("#popup").hide();
             hideOverlay();
             //Cleaning data
             $("#popupContent tbody").html("");
         }
         
         function showOverlay() {
-            $("body").append("<div id='overlay' style='width:"+windowHeight+"px;height:"+windowWidth+"px;'></div>")
+            $("body").append("<div id='overlay' style='width:"+windowWidth+"px;height:"+windowHeight+"px;'></div>")
         }
         function hideOverlay() {
             $("#overlay").remove();
@@ -239,7 +239,7 @@
         var windowWidth = $(window).width();
         
         //Popup functions
-        $("#overlay").css('height',windowHeight + 'px').css('width',windowWidth + 'px');
+        //$("#overlay").css('height',windowHeight + 'px').css('width',windowWidth + 'px');
         $("#loading").css("top", (windowHeight - 50)/2 + "px" );
         
         //Defining swiper height
