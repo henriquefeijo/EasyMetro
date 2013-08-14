@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/idangerous.swiper.css">
     <style>
         body, .app-wrapper { padding:0px; margin:0px; width: 360px; padding:0px; overflow:hidden; height:100%; }
-        .swiper-container { /*border: solid 1px black;*/ width: 360px; float:left; margin-top:0px; z-index:100; overflow:hidden; background: #333333; }
+        .swiper-container { /*border: solid 1px black;*/ width: 360px; float:left; margin-top:0px; z-index:70; overflow:hidden; background: #333333; }
         .swiper-wrapper { overflow:hidden; }
         .swiper-slide { overflow-y:scroll; overflow-x:hidden; }
         .swiper-content { }
@@ -37,7 +37,7 @@
         .tabs div.green span { background-color:#00844A; }
         .tabs div.yellow span { background-color:#FFDE08; }
         
-        #overlay { background-color:#777676; position:absolute; z-index:1000; left:0px; top:80px; opacity:0.65; }
+        #overlay { background-color:#777676; position:absolute; z-index:80; left:0px; top:80px; opacity:0.65; }
         
         #popup { background:#3c3c3c; position:absolute; z-index:1100; top:50%; left:10px; width:324px; border-radius:10px; padding:8px 8px 4px 8px; box-shadow: 0 0 3px 1px #3c3c3c;  overflow:hidden; display: none;}
         #popupContent { background:#FFFFFF;  border-radius:8px; font-family: arial;  overflow:hidden; text-align:center; box-shadow: 0 0 3px 0px #888 inset;}
@@ -71,7 +71,7 @@
         #popupFooter img { float: left; }
         #popupFooter span { float: left;  padding: 1px 3px; }
         
-        #loading { background:#fff; display:none; width:230px; position:absolute; left:60px; border-radius: 13px; z-index:1100; height:30px; padding-top:15px; font-family: arial; font-size:14px; }
+        #loading { background:#fff; display:none; width:230px; position:absolute; left:60px; border-radius: 13px; z-index:90; height:30px; padding-top:15px; font-family: arial; font-size:14px; }
         #loading img { float:left; margin-left:60px; }
         #loading span { float:left; margin-left: 10px; }
     </style>
@@ -80,8 +80,8 @@
 <body>
     
     <div class="app-wrapper">
+        <div><input type="text" id="nameOverlay" style="width:50px"><input type="text" id="valueOverlay"  style="width:50px"><span onclick="$('#overlay').css($('#nameOverlay').val(),$('#valueOverlay').val())">[ do it ]</span></div>
         <div onclick="$('#overlay').toggle()">toggle overlay</div>
-        <div onclick="$('#loading').toggle()">toggle loading</div>
         <div onclick="$('#popup').toggle()">toggle popup</div>
         <div><input type="text" id="name" style="width:50px"><input type="text" id="value"  style="width:50px"><span onclick="$('#loading').css($('#name').val(),$('#value').val())">[ do it ]</span></div>
         <div class="tabs">
