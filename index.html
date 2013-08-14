@@ -37,7 +37,7 @@
         .tabs div.green span { background-color:#00844A; }
         .tabs div.yellow span { background-color:#FFDE08; }
         
-        #overlay { background-color:#777676; position:absolute; z-index:1000; left:0px; top:20px; opacity:0.65; }
+        #overlay { background-color:#777676; position:absolute; z-index:1000; left:0px; top:60px; opacity:0.65; }
         
         #popup { background:#3c3c3c; position:absolute; z-index:1100; top:50%; left:10px; width:324px; border-radius:10px; padding:8px 8px 4px 8px; box-shadow: 0 0 3px 1px #3c3c3c;  overflow:hidden; display: none;}
         #popupContent { background:#FFFFFF;  border-radius:8px; font-family: arial;  overflow:hidden; text-align:center; box-shadow: 0 0 3px 0px #888 inset;}
@@ -78,8 +78,11 @@
     <title>Demo</title>
 </head>
 <body>
-    <div onclick="$('#overlay').toggle()">toggle overlay</div>
+    
     <div class="app-wrapper">
+        <div onclick="$('#overlay').toggle()">toggle overlay</div>
+        <div onclick="$('#loading').toggle()">toggle loading</div>
+        <div onclick="$('#popup').toggle()">toggle popup</div>
         <div class="tabs">
             <div class="red active"><span></span></div>
             <div class="orange"><span></span></div>
