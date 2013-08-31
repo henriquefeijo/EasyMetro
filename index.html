@@ -154,6 +154,10 @@
     <script src="js/stations.json.js"></script>
     <script>
         
+        var currCode = "";
+        var currLine = "";
+        var currName = "";
+        
         //Populating stations
         populateStation($(".metroLine-red"), stations.RD, "red");
         populateStation($(".metroLine-orange"), stations.OR, "orange");
@@ -169,7 +173,10 @@
             }    
         }
         
-        function showTrains(stationCode, line, stationName) { 
+        function showTrains(stationCode, line, stationName) {
+            currCode = stationCode;
+            currLine = line;
+            currName = stationName;
             getStationData(stationCode, line, stationName);
         }
         
@@ -216,6 +223,11 @@
                     console.log(type);
                 }
             });
+        }
+        
+        function refreshTrains() {
+            closePopup();
+            showTrains(currCode, currLine, currName);
         }
         
         function closePopup() {
