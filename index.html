@@ -37,7 +37,7 @@
         .tabs div.green span { background-color:#00844A; }
         .tabs div.yellow span { background-color:#FFDE08; }
         
-        #overlay { background-color:#777676; position:absolute; z-index:80; left:0px; top:80px; opacity:0.65; }
+        #overlay { background-image:url(img/overlay.png); position:absolute; z-index:80; left:0px; top:0px;  }
         
         #popup { background:#3c3c3c; position:absolute; z-index:1100; top:50%; left:10px; width:324px; border-radius:10px; padding:8px 8px 4px 8px; box-shadow: 0 0 3px 1px #3c3c3c;  overflow:hidden; display: none;}
         #popupContent { background:#FFFFFF;  border-radius:8px; font-family: arial;  overflow:hidden; text-align:center; box-shadow: 0 0 3px 0px #888 inset;}
@@ -80,10 +80,11 @@
 <body>
     
     <div class="app-wrapper">
-        <div><input type="text" id="nameOverlay" style="width:50px"><input type="text" id="valueOverlay"  style="width:50px"><span onclick="$('#overlay').css($('#nameOverlay').val(),$('#valueOverlay').val())">[ do it ]</span></div>
+        <!--<div><input type="text" id="nameOverlay" style="width:50px"><input type="text" id="valueOverlay"  style="width:50px"><span onclick="$('#overlay').css($('#nameOverlay').val(),$('#valueOverlay').val())">[ do it ]</span></div>
         <div onclick="$('#overlay').toggle()">toggle overlay</div>
         <div onclick="$('#popup').toggle()">toggle popup</div>
         <div><input type="text" id="name" style="width:50px"><input type="text" id="value"  style="width:50px"><span onclick="$('#loading').css($('#name').val(),$('#value').val())">[ do it ]</span></div>
+        -->
         <div class="tabs">
             <div class="red active"><span></span></div>
             <div class="orange"><span></span></div>
@@ -164,7 +165,7 @@
             for (var i = 0; i<arrStations.length; i++) {
                 var code = arrStations[i].Code;
                 var name = arrStations[i].Name;
-                objContainer.append("<div ontouchend=\"showTrains('"+code+"', '"+line+"', '"+name.replace("'","\\'")+"')\"><span><i></i></span><p>" + name + "</p></div>");
+                objContainer.append("<div onclick=\"showTrains('"+code+"', '"+line+"', '"+name.replace("'","\\'")+"')\"><span><i></i></span><p>" + name + "</p></div>");
             }    
         }
         
