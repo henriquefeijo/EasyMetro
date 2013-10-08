@@ -1,14 +1,13 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget id="net.prontolabs.easymetro" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>EasyMetro</name>
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget id="net.prontolabs.easymetro" version="0.0.1" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Pronto EasyMetro</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        A simple and quick to use DC Metro application.
     </description>
-    <author email="prontolabs@gmail.com" href="http://cordova.io">
+    <author email="prontolabs@gmail.com" href="http://prontolabs.net">
         Pronto Labs - Henrique Feijo
     </author>
-    <access origin="*" />
+    <gap:platform name="android" />
     <preference name="fullscreen" value="false" />
-    <preference name="EnableViewportScale" value="true" />
     <preference name="orientation" value="portrait" />
 </widget>
