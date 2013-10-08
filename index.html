@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8" />
-    <meta name="viewport" content="maximum-scale=10.0, minimum-scale=0.1, initial-scale=1.0, height=device-height, width=320px, target-densityDpi=medium-dpi" / > 
+    <meta name="viewport" content="maximum-scale=10.0, minimum-scale=1.0, initial-scale=1.0, height=device-height, width=320px, target-densityDpi=medium-dpi" / > 
     
     <link rel="stylesheet" href="css/idangerous.swiper.css">
     <style>
@@ -296,27 +296,28 @@
             }
         })
         
-        var windowHeight = $(window).height();
-        var windowWidth = $(window).width();
-        
-        //Popup functions
-        $("#loading").css("top", (windowHeight - 50)/2 + "px" );
-        $("#overlay").css('height',windowHeight + 'px').css('width',windowWidth + 'px');
-        
-        //Defining swiper height
-        $(".swiper-slide, .swiper-wrapper").css('height',windowHeight-44 + 'px');
-        
-        //Tabs functions
-        $(".tabs div").on('touchend mousedown',function(e){
-            e.preventDefault()
-            $(".tabs .active").removeClass('active')
-            $(this).addClass('active')
-            mySwiper.swipeTo( $(this).index() )
-        })
-        $(".tabs div").click(function(e){
-            e.preventDefault()
-        })
-        
+        $(function() {
+            var windowHeight = $(window).height();
+            var windowWidth = $(window).width();
+            
+            //Popup functions
+            $("#loading").css("top", (windowHeight - 50)/2 + "px" );
+            $("#overlay").css('height',windowHeight + 'px').css('width',windowWidth + 'px');
+            
+            //Defining swiper height
+            $(".swiper-slide, .swiper-wrapper").css('height',windowHeight-44 + 'px');
+            
+            //Tabs functions
+            $(".tabs div").on('touchend mousedown',function(e){
+                e.preventDefault()
+                $(".tabs .active").removeClass('active')
+                $(this).addClass('active')
+                mySwiper.swipeTo( $(this).index() )
+            })
+            $(".tabs div").click(function(e){
+                e.preventDefault()
+            })
+        });
         
         Date.prototype.timeNow = function(){ return ((this.getHours() < 10)?"0":"") + ((this.getHours()>12)?(this.getHours()-12):this.getHours()) +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds() + ((this.getHours()>12)?('PM'):'AM'); };
     </script>
