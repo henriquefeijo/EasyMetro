@@ -3,17 +3,17 @@
 <head>
     
     <meta charset="utf-8" />
-    <meta name="viewport" content="maximum-scale=10.0, minimum-scale=0.1, initial-scale=1.0, height=device-height, width=330px, target-densityDpi=medium-dpi" / > 
+    <meta name="viewport" content="maximum-scale=10.0, minimum-scale=0.1, initial-scale=1.0, height=device-height, width=320px, target-densityDpi=medium-dpi" / > 
     
     <link rel="stylesheet" href="css/idangerous.swiper.css">
     <style>
-        body, .app-wrapper { padding:0px; margin:0px; width: 330px; padding:0px; overflow:hidden; height:100%; }
-        .swiper-container { /*border: solid 1px black;*/ width: 330px; float:left; margin-top:0px; z-index:70; overflow:hidden; background: #333333; }
+        body, .app-wrapper { padding:0px; margin:0px; width: 320px; padding:0px; overflow:hidden; height:100%; }
+        .swiper-container { /*border: solid 1px black;*/ width: 320px; float:left; margin-top:0px; z-index:70; overflow:hidden; background: #333333; }
         .swiper-wrapper { overflow:hidden; }
         .swiper-slide { overflow-y:scroll; overflow-x:hidden; }
         .swiper-content { }
         
-        .metroLine { margin:18px; padding:20px 0px; background-color:#fff; border-radius:10px; overflow:hidden; }
+        .metroLine { margin:14px; padding:20px 0px; background-color:#fff; border-radius:10px; overflow:hidden; }
         .metroLine div { display:block; white-space:nowrap; overflow:hidden; padding-left:40px;  font-family: arial; font-size:18px; font-weight: bold; }
         .metroLine div span { float:left; display:block; background-color:#D62929; width:26px; margin-right:10px; height:51px; }
         .metroLine div span i { float:left; margin:14px 2px; z-index:100; background: #FFFFFF; border: 4px solid #000000; border-radius: 14px; display: block; height: 14px; width: 14px; }
@@ -27,7 +27,7 @@
         .arrow-up { margin-left:300px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #4a4e57; }
         .arrow-down { margin-left:300px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid #4a4e57; }
         
-        .tabs { background-color:#3f3f41; height:44px; float:left; z-index:1000; width: 330px; }
+        .tabs { background-color:#3f3f41; height:44px; float:left; z-index:1000; width: 320px; }
         .tabs div { float:left; display:block; padding:8px 15px; }
         .tabs div.active { border-bottom: solid 4px #33b5e4; padding-bottom: 7px; }
         .tabs div span { float:left; background: #FFFFFF; border: 0px solid #000000; border-radius: 12px; display: block; height: 24px; width: 24px; }
@@ -227,8 +227,8 @@
             showOverlay();
             showLoading();
             $.ajax({
-                url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
-                //url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
+                //url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
+                url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
                 type: 'GET',
                 dataType: 'json',
                 success: (function ( data ) {
