@@ -9,6 +9,6 @@
     </author>
     <gap:platform name="android" />
     <preference name="fullscreen" value="false" />
-    <preference name="EnableViewportScale" value="true" />
     <preference name="orientation" value="portrait" />
+    <preference name="EnableViewportScale" value="true" />
 </widget>

@@ -3,323 +3,214 @@
 <head>
     
     <meta charset="utf-8" />
-    <meta name="viewport" content="maximum-scale=10.0, minimum-scale=1.0, initial-scale=1.0, height=device-height, width=320px, target-densityDpi=medium-dpi" / > 
+    <meta name="viewport" content="maximum-scale=10.0, minimum-scale=0.1, initial-scale=1.0, height=device-height, width=360px, target-densityDpi=high-dpi" / > 
     
     <link rel="stylesheet" href="css/idangerous.swiper.css">
     <style>
-        body, .app-wrapper { padding:0px; margin:0px; width: 320px; padding:0px; overflow:hidden; height:100%; }
-        .swiper-container { /*border: solid 1px black;*/ width: 320px; float:left; margin-top:0px; z-index:70; overflow:hidden; background: #333333; }
-        .swiper-wrapper { overflow:hidden; }
-        .swiper-slide { overflow-y:scroll; overflow-x:hidden; }
-        .swiper-content { }
+        body, .app-wrapper { padding:0px; margin:0px; width: 360px; padding:0px; }
+        .swiper-container { /*border: solid 1px black;*/ width: 360px; float:left; margin-top:50px; z-index:100; padding:10px 0px; }
         
-        .metroLine { margin:14px; padding:20px 0px; background-color:#fff; border-radius:10px; overflow:hidden; }
-        .metroLine div { display:block; white-space:nowrap; overflow:hidden; padding-left:40px;  font-family: arial; font-size:18px; font-weight: bold; }
-        .metroLine div span { float:left; display:block; background-color:#D62929; width:26px; margin-right:10px; height:51px; }
-        .metroLine div span i { float:left; margin:14px 2px; z-index:100; background: #FFFFFF; border: 4px solid #000000; border-radius: 14px; display: block; height: 14px; width: 14px; }
-        .metroLine div p { margin:13px; white-space:nowrap; }
-        .metroLine-red div span { background-color:#D62929; }
-        .metroLine-orange div span { background-color:#EF9431; }
-        .metroLine-blue div span { background-color:#006BAD; }
-        .metroLine-green div span { background-color:#00844A; }
-        .metroLine-yellow div span { background-color:#FFDE08; }
+        .metroLine { overflow:hidden; padding:0px; margin:0px; display:block; width:280px; position:relative; margin-left:60px; }
+        .metroLine-red { background-color:#D62929; }
+        .metroLine-orange { background-color:#EF9431; }
+        .metroLine-blue { background-color:#006BAD; }
+        .metroLine-green { background-color:#00844A; }
+        .metroLine-yellow { background-color:#FFDE08; }
+        .metroLine li { margin-left:26px; list-style-type:none; display:block; overflow:hidden; width:330px;  background-color:#FFF;  }
+        .metroLine li a { float:left; white-space:nowrap; padding:15px 0px 15px 8px; font-family: arial; font-size:20px; font-weight: bold;  }
+        .metroLine li a span { float:left; position:absolute; left:2px; z-index:100; background: #FFFFFF; border: 4px solid #000000; border-radius: 14px; display: block; height: 14px; width: 14px; }
         
-        .arrow-up { margin-left:300px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #4a4e57; }
-        .arrow-down { margin-left:300px; width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid #4a4e57; }
-        
-        .tabs { background-color:#3f3f41; height:44px; float:left; z-index:1000; width: 320px; }
-        .tabs div { float:left; display:block; padding:8px 15px; }
-        .tabs div.active { border-bottom: solid 4px #33b5e4; padding-bottom: 7px; }
-        .tabs div span { float:left; background: #FFFFFF; border: 0px solid #000000; border-radius: 12px; display: block; height: 24px; width: 24px; }
-        .tabs div.red span { background-color:#f60e07; }
-        .tabs div.orange span { background-color:#EF9431; }
-        .tabs div.blue span { background-color:#006BAD; }
-        .tabs div.green span { background-color:#00844A; }
-        .tabs div.yellow span { background-color:#FFDE08; }
-        
-        #overlay { background-image:url(img/overlay.png); position:absolute; z-index:80; left:0px; top:0px; display:none; }
-        
-        #popup { background:#3c3c3c; position:absolute; z-index:1100; top:50%; left:10px; width:294px; border-radius:10px; padding:8px 8px 4px 8px; box-shadow: 0 0 3px 1px #3c3c3c;  overflow:hidden; display: none;}
-        #popupContent { background:#FFFFFF;  border-radius:8px; font-family: arial;  overflow:hidden; text-align:center; box-shadow: 0 0 3px 0px #888 inset;}
-        #popupTitle { font-size:20px; font-weight: bold;  overflow:hidden; display:inline-block; vertical-align:top; margin-top:6px; }
-        #popupTitle span { display:inline-block; background-color:#ffffff; width:25px; height:30px; }
-        #popupTitle span i { margin:4px 2px; z-index:100; background: #FFFFFF; border: 4px solid #000000; border-radius: 13px; display: inline-block; height: 13px; width: 13px; }
-        #popupTitle p { margin:4px 4px 4px 8px; white-space:nowrap; display:inline-block; vertical-align:top; }
-        #popupContent hr { margin:4px 20px; background: #AAAAAA; border: none; height: 1px; }
-        #popupTrains { padding:2px 8px; border-collapse: collapse; }
-        #popupTrains th { font-size:10px; background-color: #eee; margin:0px; padding:0px; border-collapse:collapse;}
-        #popupTrains th:nth-child(1), .trains th:nth-child(2) { width:34px; }
-        #popupTrains th:nth-child(3) { width: 190px; }
-        #popupTrains th:nth-child(4) { width: 40px; }
-        #popupTrains td { margin:0px; }
-        #popupTrains hr { margin:4px 20px; background: #AAAAAA; border: none; height: 1px; }
-        
-        #popup.station-red #popupTitle span { background-color:#D62929; }
-        #popup.station-orange #popupTitle span { background-color:#EF9431; }
-        #popup.station-blue #popupTitle span { background-color:#006BAD; }
-        #popup.station-green #popupTitle span { background-color:#00844A; }
-        #popup.station-yellow #popupTitle span { background-color:#FFDE08; }
-        
-        #popupContent td i { border-radius: 5px; width:16px; height:16px; display:block; float:left; margin-left:9px;}
-        #popupContent td i.RD { background-color: #D62929; }
-        #popupContent td i.OR { background-color: #EF9431; }
-        #popupContent td i.BL { background-color: #006BAD; }
-        #popupContent td i.YL { background-color: #FFDE08; }
-        #popupContent td i.GR { background-color: #00844A; }
-        
-        #popupFooter { font-size:10px; color:#ffffff; font-family:arial; margin:4px 8px 0px 8px; }
-        #popupFooter img { float: left; }
-        #popupFooter span { float: left;  padding: 1px 3px; }
-        
-        #loading { background:#fff; display:none; width:230px; position:absolute; left:60px; border-radius: 13px; z-index:90; height:30px; padding-top:15px; font-family: arial; font-size:14px; }
-        #loading img { float:left; margin-left:60px; }
-        #loading span { float:left; margin-left: 10px; }
+        .tabs { background: #DDDDDD; height:44px; float:left; position:fixed; z-index:1000;  box-shadow: 0px 4px 2px -1px #888;  }
+        .tabs a { float:left; display:block; padding:10px 21px; }
+        .tabs a.active { background: #FFF; box-shadow: none; border: solid 2px #333; border-radius:12px 12px 0px 0px; border-bottom:0px; padding: 8px 19px 6px 19px;  }
+        .tabs a span { float:left; background: #FFFFFF; border: 3px solid #000000; border-radius: 10px; display: block; height: 24px; width: 24px; }
+        .tabs a.red span { background-color:#D62929; }
+        .tabs a.orange span { background-color:#EF9431; }
+        .tabs a.blue span { background-color:#006BAD; }
+        .tabs a.green span { background-color:#00844A; }
+        .tabs a.yellow span { background-color:#FFDE08; }
     </style>
-    <title>Pronto EasyMetro - Pronto Labs</title>
+    <title>Demo</title>
 </head>
 <body>
-    
     <div class="app-wrapper">
-        <!--<div><input type="text" id="nameOverlay" style="width:50px"><input type="text" id="valueOverlay"  style="width:50px"><span onclick="$('#overlay').css($('#nameOverlay').val(),$('#valueOverlay').val())">[ do it ]</span></div>
-        <div onclick="$('#overlay').toggle()">toggle overlay</div>
-        <div onclick="$('#popup').toggle()">toggle popup</div>
-        <div><input type="text" id="name" style="width:50px"><input type="text" id="value"  style="width:50px"><span onclick="$('#loading').css($('#name').val(),$('#value').val())">[ do it ]</span></div>
-        -->
         <div class="tabs">
-            <div class="red active"><span></span></div>
-            <div class="orange"><span></span></div>
-            <div class="blue"><span></span></div>
-            <div class="green"><span></span></div>
-            <div class="yellow"><span></span></div>
+            <a href="#" class="red active"><span></span></a>
+            <a href="#" class="orange"><span></span></a>
+            <a href="#" class="blue"><span></span></a>
+            <a href="#" class="green"><span></span></a>
+            <a href="#" class="yellow"><span></span></a>
         </div>
-        <div id="MainContent" class="swiper-container">
+        <div class="swiper-container swiper-content">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <div class="swiper-content">
-                    <div class="metroLine metroLine-red"></div>
-                </div>
+                <ul class="metroLine metroLine-red">
+                    <li><a><span></span>Shady Grove</a></li>
+                    <li class="even"><a><span></span>Rockville</a></li>
+                    <li><a><span></span>Twinbrook</a></li>
+                    <li class="even"><a><span></span>White Flint</a></li>
+                    <li><a><span></span>Grosvenor</a></li>
+                    <li class="even"><a><span></span>Medical Center</a></li>
+                    <li><a><span></span>Bethesda</a></li>
+                    <li class="even"><a><span></span>Friendship Heights</a></li>
+                    <li><a><span></span>Tenleytown</a></li>
+                    <li class="even"><a><span></span>Van Ness UDC</a></li>
+                    <li><a><span></span>Cleveland Park</a></li>
+                    <li class="even"><a><span></span>Woodley Park Zoo</a></li>
+                    <li><a><span></span>Dupont Circle</a></li>
+                    <li class="even"><a><span></span>Farragut North</a></li>
+                    <li><a><span></span>Metro Center</a></li>
+                    <li class="even"><a><span></span>Gallery Place</a></li>
+                    <li><a><span></span>Judiciary Square</a></li>
+                    <li class="even"><a><span></span>Union Station</a></li>
+                    <li><a><span></span>New York Ave</a></li>
+                    <li class="even"><a><span></span>Rhode Island Ave</a></li>
+                    <li><a><span></span>Brookland</a></li>
+                    <li class="even"><a><span></span>Fort Totten</a></li>
+                    <li><a><span></span>Takoma</a></li>
+                    <li class="even"><a><span></span>Silver Spring</a></li>
+                    <li><a><span></span>Forest Glen</a></li>
+                    <li class="even"><a><span></span>Wheaton</a></li>
+                    <li><a><span></span>Glenmont</a></li>
+                </ul>  
             </div>
             <div class="swiper-slide">
-                <div class="swiper-content">
-                    <div class=" metroLine metroLine-orange"></div>
-                </div>
+                <ul class="metroLine metroLine-orange">
+                    <li><a><span></span>Vienna</a></li>
+                    <li class="even"><a><span></span>Dunn-Loring</a></li>
+                    <li><a><span></span>West Falls Church</a></li>
+                    <li class="even"><a><span></span>East Falls Church</a></li>
+                    <li><a><span></span>Ballston</a></li>
+                    <li class="even"><a><span></span>Virginia Square</a></li>
+                    <li><a><span></span>Clarendon</a></li>
+                    <li class="even"><a><span></span>Court House</a></li>
+                    <li><a><span></span>Rosslyn</a></li>
+                    <li class="even"><a><span></span>Foggy Bottom</a></li>
+                    <li><a><span></span>Farragut West</a></li>
+                    <li class="even"><a><span></span>McPhearson Square</a></li>
+                    <li><a><span></span>Metro Center</a></li>
+                    <li class="even"><a><span></span>Farragut North</a></li>
+                    <li><a><span></span>Metro Center</a></li>
+                    <li class="even"><a><span></span>Gallery Place</a></li>
+                    <li><a><span></span>Judiciary Square</a></li>
+                    <li class="even"><a><span></span>Union Station</a></li>
+                    <li><a><span></span>New York Ave</a></li>
+                    <li class="even"><a><span></span>Rhode Island Ave</a></li>
+                    <li><a><span></span>Brookland</a></li>
+                    <li class="even"><a><span></span>Fort Totten</a></li>
+                    <li><a><span></span>Takoma</a></li>
+                </ul>  
             </div>
             <div class="swiper-slide">
-                <div class="swiper-content">
-                    <div class=" metroLine metroLine-blue"></div>
-                </div>
+                <ul class="metroLine metroLine-blue">
+                    <li><a><span></span>Largo Town Center</a></li>
+                    <li class="even"><a><span></span>Morgan Blvd</a></li>
+                    <li><a><span></span>Addison Road</a></li>
+                    <li class="even"><a><span></span>Capitol Heights</a></li>
+                    <li><a><span></span>Benning Road</a></li>
+                    <li class="even"><a><span></span>Virginia Square</a></li>
+                    <li><a><span></span>Clarendon</a></li>
+                    <li class="even"><a><span></span>Court House</a></li>
+                    <li><a><span></span>Rosslyn</a></li>
+                    <li class="even"><a><span></span>Foggy Bottom</a></li>
+                    <li><a><span></span>Farragut West</a></li>
+                    <li class="even"><a><span></span>McPhearson Square</a></li>
+                    <li><a><span></span>Metro Center</a></li>
+                    <li class="even"><a><span></span>Farragut North</a></li>
+                    <li><a><span></span>Metro Center</a></li>
+                    <li class="even"><a><span></span>Gallery Place</a></li>
+                    <li><a><span></span>Judiciary Square</a></li>
+                    <li class="even"><a><span></span>Union Station</a></li>
+                    <li><a><span></span>New York Ave</a></li>
+                    <li class="even"><a><span></span>Rhode Island Ave</a></li>
+                    <li><a><span></span>Brookland</a></li>
+                    <li class="even"><a><span></span>Fort Totten</a></li>
+                    <li><a><span></span>Takoma</a></li>
+                </ul>  
             </div>
-            <div class="swiper-slide">
-                <div class="swiper-content">
-                    <div class=" metroLine metroLine-green"></div>
-                </div>
+                      <div class="swiper-slide">
+                <ul class="metroLine metroLine-green">
+                    <li><a><span></span>Largo Town Center</a></li>
+                    <li class="even"><a><span></span>Morgan Blvd</a></li>
+                    <li><a><span></span>Addison Road</a></li>
+                    <li class="even"><a><span></span>Capitol Heights</a></li>
+                    <li><a><span></span>Benning Road</a></li>
+                    <li class="even"><a><span></span>Virginia Square</a></li>
+                    <li><a><span></span>Clarendon</a></li>
+                    <li class="even"><a><span></span>Court House</a></li>
+                    <li><a><span></span>Rosslyn</a></li>
+                    <li class="even"><a><span></span>Foggy Bottom</a></li>
+                    <li><a><span></span>Farragut West</a></li>
+                    <li class="even"><a><span></span>McPhearson Square</a></li>
+                    <li><a><span></span>Metro Center</a></li>
+                    <li class="even"><a><span></span>Farragut North</a></li>
+                    <li><a><span></span>Metro Center</a></li>
+                    <li class="even"><a><span></span>Gallery Place</a></li>
+                    <li><a><span></span>Judiciary Square</a></li>
+                    <li class="even"><a><span></span>Union Station</a></li>
+                    <li><a><span></span>New York Ave</a></li>
+                    <li class="even"><a><span></span>Rhode Island Ave</a></li>
+                    <li><a><span></span>Brookland</a></li>
+                    <li class="even"><a><span></span>Fort Totten</a></li>
+                    <li><a><span></span>Takoma</a></li>
+                </ul>  
             </div>
-            <div class="swiper-slide">
-                <div class="swiper-content">
-                    <div class=" metroLine metroLine-yellow"></div>
-                </div>
+                      <div class="swiper-slide">
+                <ul class="metroLine metroLine-yellow">
+                    <li><a><span></span>Largo Town Center</a></li>
+                    <li class="even"><a><span></span>Morgan Blvd</a></li>
+                    <li><a><span></span>Addison Road</a></li>
+                    <li class="even"><a><span></span>Capitol Heights</a></li>
+                    <li><a><span></span>Benning Road</a></li>
+                    <li class="even"><a><span></span>Virginia Square</a></li>
+                    <li><a><span></span>Clarendon</a></li>
+                    <li class="even"><a><span></span>Court House</a></li>
+                    <li><a><span></span>Rosslyn</a></li>
+                    <li class="even"><a><span></span>Foggy Bottom</a></li>
+                    <li><a><span></span>Farragut West</a></li>
+                    <li class="even"><a><span></span>McPhearson Square</a></li>
+                    <li><a><span></span>Metro Center</a></li>
+                    <li class="even"><a><span></span>Farragut North</a></li>
+                    <li><a><span></span>Metro Center</a></li>
+                    <li class="even"><a><span></span>Gallery Place</a></li>
+                    <li><a><span></span>Judiciary Square</a></li>
+                    <li class="even"><a><span></span>Union Station</a></li>
+                    <li><a><span></span>New York Ave</a></li>
+                    <li class="even"><a><span></span>Rhode Island Ave</a></li>
+                    <li><a><span></span>Brookland</a></li>
+                    <li class="even"><a><span></span>Fort Totten</a></li>
+                    <li><a><span></span>Takoma</a></li>
+                </ul>  
             </div>
           </div>
         </div>
     
     </div>
-    <div id='overlay'></div>
-    <div id="loading"><img src="img/ajax-loader.gif" /><span>Loading</span></div>
-    <div id="popup">
-        <div id="popupContent">
-            <div id="popupTitle"><span><i></i></span><p>Farragut North</p></div>
-            <hr />
-            <div id="popupTrains">
-                <table id="trains-up">
-                    <thead><tr><th>Line</th><th>Cars</th><th>To</th><th>Minutes</th></tr></thead>
-                    <tbody></tbody>
-                </table>
-                <hr />
-                <table id="trains-down">
-                    <thead><tr><th>Line</th><th>Cars</th><th>To</th><th>Minutes</th></tr></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-        <table id="popupFooter"><tr>
-            <td style="width:60px;" onclick="refreshTrains()"><img src="img/refresh.png" /><span>Refresh</span></td>
-            <td style="width:178px;text-align:center;padding-right:8px;"> Updated: <i class="lastUpdated">Just now</i></td>
-            <td style="width:50px;" onclick="closePopup()"><img src="img/close.png" /><span>Close</span></td>
-        </tr></table>
-    </div>
     
     <script src="js/zepto.js"></script>
-    <script src="js/zepto-slide-transition.min.js"></script>
     <script src="js/idangerous.swiper.js"></script>
-    <script src="js/stations.json.js"></script>
     <script>
-        
-        var currCode = "";
-        var currLine = "";
-        var currName = "";
-        var lastUpdated;
-        var timerInterval;
-        //Populating stations
-        populateStation($(".metroLine-red"), stations.RD, "red");
-        populateStation($(".metroLine-orange"), stations.OR, "orange");
-        populateStation($(".metroLine-blue"), stations.BL, "blue");
-        populateStation($(".metroLine-green"), stations.GR, "green");
-        populateStation($(".metroLine-yellow"), stations.YL, "yellow");
-        
-        function populateStation(objContainer, arrStations, line) {
-            for (var i = 0; i<arrStations.length; i++) {
-                var code = arrStations[i].Code;
-                var name = arrStations[i].Name;
-                objContainer.append("<div onclick=\"showTrains('"+code+"', '"+line+"', '"+name.replace("'","\\'")+"')\"><span><i></i></span><p>" + name + "</p></div>");
-            }    
-        }
-        
-        function showTrains(stationCode, line, stationName) {
-            currCode = stationCode;
-            currLine = line;
-            currName = stationName;
-            getStationData(stationCode, line, stationName);
-        }
-        
-        function showTrainData(stationCode, trains, line, stationName) {
-            
-            $("#popup").removeClass().addClass("station-"+line);
-            $("#popupTitle p").text(stationName);
-            for (var i = 0; i<trains.length; i++) {
-                var train = trains[i];
-                if (train.Line == "")
-                    train.Line = "NA";
-                if (train.Car == "" || train.Car == null)
-                    train.Car = "?";
-                if (train.DestinationName == "")
-                    train.DestinationName = "Train";
-                if (train.Min == "")
-                    train.Min = "?";
-                var content = "<tr>";
-                content += "<td><i class='" + train.Line + "'></i></td>";
-                content += "<td>" + train.Car + "</td>";
-                content += "<td>" + train.DestinationName + "</td>";
-                content += "<td" + (train.Min == 'BRD' ? " class='boarding'" : "") + "><span class='min'>" + train.Min + "</span></td></tr>";
-                if (train.Group == 1)
-                    $("#trains-down tbody").append(content);
-                else
-                    $("#trains-up tbody").append(content);
-            }
-            
-            //Add blinking to boarding
-            $('#popup .boarding').each(function() {
-                var elem = $(this);
-                setInterval(function() {
-                    if (elem.css('visibility') == 'hidden') {
-                        elem.css('visibility', 'visible');
-                    } else {
-                        elem.css('visibility', 'hidden');
-                    }    
-                }, 350);
-            });
-            
-            $("#loading").hide();
-            $("#popup").show();
-            $("#popup").css("top", ($(window).height() - $("#popup").height())/2 + "px" );
-        }
-        
-        function getStationData(stationCode, line, stationName) {
-            showOverlay();
-            showLoading();
-            $.ajax({
-                //url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
-                url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
-                type: 'GET',
-                dataType: 'json',
-                success: (function ( data ) {
-                    lastUpdated = new Date();
-                    timerInterval = setInterval ( "updateTimer()", 1000 );
-                    $(".lastUpdated").html("just now");
-                    showTrainData(stationCode, data.Trains, line, stationName);
-                    console.log(data);
-                }),
-                error: function(xhr, type){  alert('error:' + type);
-                    console.log(xhr);
-                    console.log(type);
-                }
-            });
-        }
-        
-        function updateTimer() {
-            var currentTime = new Date();
-            var currentTimer = Math.floor((currentTime.getTime() - lastUpdated.getTime())/1000);
-
-            if (currentTimer %5 == 0) {
-                var timerText = currentTimer + "s ago";
-                if (currentTimer >= 60) {
-                    timerText = Math.floor(currentTimer / 60) + "m ";
-                    if (currentTimer % 60 != 0)
-                        timerText += currentTimer%60 + "s ";
-                    timerText += " ago";
-                }
-                $(".lastUpdated").html(timerText);
-            }
-        }
-        
-        function refreshTrains() {
-            closePopup();
-            showTrains(currCode, currLine, currName);
-        }
-        
-        function closePopup() {
-            $("#popup").hide();
-            hideOverlay();
-            //Cleaning data
-            clearInterval(timerInterval);
-            $("#popupContent tbody").html("");
-        }
-        
-        function showOverlay() {
-            $("#overlay").show();
-        }
-        function hideOverlay() {
-            $("#overlay").hide();
-        }
-        
-        function showLoading() {
-            $("#loading").show();
-            $("#loading").css("height", windowHeight + "px");
-            $("#loading").css("height", "30px");
-        }
-        
-        //Swiper
+        //$(".swiper-container").width($(window).width());
+        //$(".swiper-container").height($(window).height());
         var mySwiper = new Swiper('.swiper-container',{
-            loop:false,
+            loop:true,
+            grabCursor: true,
             onSlideChangeStart: function(){
                 $(".tabs .active").removeClass('active');
-                $(".tabs div").eq(mySwiper.activeIndex).addClass('active');
+                $(".tabs a").eq(mySwiper.activeIndex-1).addClass('active');
             }
         })
+        $(".swiper-slide, .swiper-wrapper").css('height','auto');
         
-        $(function() {
-            var windowHeight = $(window).height();
-            var windowWidth = $(window).width();
-            
-            //Popup functions
-            $("#loading").css("top", (windowHeight - 50)/2 + "px" );
-            $("#overlay").css('height',windowHeight + 'px').css('width',windowWidth + 'px');
-            
-            //Defining swiper height
-            $(".swiper-slide, .swiper-wrapper").css('height',windowHeight-44 + 'px');
-            
-            //Tabs functions
-            $(".tabs div").on('touchend mousedown',function(e){
-                e.preventDefault()
-                $(".tabs .active").removeClass('active')
-                $(this).addClass('active')
-                mySwiper.swipeTo( $(this).index() )
-            })
-            $(".tabs div").click(function(e){
-                e.preventDefault()
-            })
-        });
-        
-        Date.prototype.timeNow = function(){ return ((this.getHours() < 10)?"0":"") + ((this.getHours()>12)?(this.getHours()-12):this.getHours()) +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds() + ((this.getHours()>12)?('PM'):'AM'); };
+        $(".tabs a").on('touchstart mousedown',function(e){
+            e.preventDefault()
+            $(".tabs .active").removeClass('active')
+            $(this).addClass('active')
+            mySwiper.swipeTo( $(this).index() )
+        })
+        $(".tabs a").click(function(e){
+            e.preventDefault()
+          })
     </script>
 </body>
 </html>
