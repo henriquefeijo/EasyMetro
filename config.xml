@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.prontolabs.easymetro" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="net.prontolabs.easymetro" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>EasyMetro</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -7,7 +7,6 @@
     <author email="prontolabs@gmail.com" href="http://cordova.io">
         Pronto Labs - Henrique Feijo
     </author>
-    
     <access origin="*" />
     <preference name="fullscreen" value="false" />
     <preference name="EnableViewportScale" value="true" />
