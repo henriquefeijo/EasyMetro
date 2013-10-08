@@ -143,7 +143,7 @@
         </div>
         <table id="popupFooter"><tr>
             <td style="width:60px;" onclick="refreshTrains()"><img src="img/refresh.png" /><span>Refresh</span></td>
-            <td style="width:178px;text-align:center;padding-right:8px;"> Last Updated: <i class="lastUpdated">11:13:34 AM</i></td>
+            <td style="width:178px;text-align:center;padding-right:8px;"> Updated: <i class="lastUpdated">Just now</i></td>
             <td style="width:50px;" onclick="closePopup()"><img src="img/close.png" /><span>Close</span></td>
         </tr></table>
     </div>
@@ -157,7 +157,8 @@
         var currCode = "";
         var currLine = "";
         var currName = "";
-        
+        var lastUpdated;
+        var timerInterval;
         //Populating stations
         populateStation($(".metroLine-red"), stations.RD, "red");
         populateStation($(".metroLine-orange"), stations.OR, "orange");
@@ -209,12 +210,14 @@
             showOverlay();
             showLoading();
             $.ajax({
-                //url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
-                url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
+                url: "http://localhost:8080/EasyMetro/www/ws/"+stationCode,
+                //url: "http://api.wmata.com/StationPrediction.svc/json/GetPrediction/"+stationCode+"?api_key=nmzzr63z78t6tp9qndcubt4h",
                 type: 'GET',
                 dataType: 'json',
                 success: (function ( data ) {
-                    $(".lastUpdated").html(new Date().timeNow());
+                    lastUpdated = new Date();
+                    timerInterval = setInterval ( "updateTimer()", 1000 );
+                    $(".lastUpdated").html("just now");
                     showTrainData(stationCode, data.Trains, line, stationName);
                     console.log(data);
                 }),
@@ -223,6 +226,22 @@
                     console.log(type);
                 }
             });
+        }
+        
+        function updateTimer() {
+            var currentTime = new Date();
+            var currentTimer = Math.floor((currentTime.getTime() - lastUpdated.getTime())/1000);
+
+            if (currentTimer %5 == 0) {
+                var timerText = currentTimer + "s ago";
+                if (currentTimer >= 60) {
+                    timerText = Math.floor(currentTimer / 60) + "m ";
+                    if (currentTimer % 60 != 0)
+                        timerText += currentTimer%60 + "s ";
+                    timerText += " ago";
+                }
+                $(".lastUpdated").html(timerText);
+            }
         }
         
         function refreshTrains() {
@@ -234,6 +253,7 @@
             $("#popup").hide();
             hideOverlay();
             //Cleaning data
+            clearInterval(timerInterval);
             $("#popupContent tbody").html("");
         }
         
