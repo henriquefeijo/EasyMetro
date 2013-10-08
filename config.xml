@@ -2,7 +2,7 @@
 <widget id="net.prontolabs.easymetro" version="0.0.1" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Pronto EasyMetro</name>
     <description>
-        A simple and quick to use DC Metro application.
+        An example for phonegap build docs. 
     </description>
     <author email="prontolabs@gmail.com" href="http://prontolabs.net">
         Pronto Labs - Henrique Feijo
